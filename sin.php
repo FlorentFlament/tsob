@@ -1,0 +1,23 @@
+<?php
+$a=0;
+$ligne=0;
+for($i=0;$i<60;$i++)
+{
+	$a=$a+0.4;
+	$msg=abs(sin($a)*6);
+	$msg=dechex(round($msg,0));
+	if($msg==0)$msg=1;
+	if($ligne==0){
+		echo(".byte $".$msg.",");
+		$ligne++;
+	}else{
+		if($ligne>=9){
+			echo("$".$msg."\r\n");
+			$ligne=0;
+		}else{
+			echo("$".$msg.",");
+			$ligne++;
+		}
+	}
+}
+?>
