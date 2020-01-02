@@ -147,7 +147,7 @@ PARTSTART_FLAG equ *
 ; Bank 1
 PARTSTART_SLIDESHOW equ *
 	INCLUDE "slideshow.asm"
-	echo "slideshow:", (*-PARTSTART_INTRO)d, "B"
+	echo "slideshow:", (*-PARTSTART_SLIDESHOW)d, "B"
 	END_SEGMENT 1
 
 ; Bank 2
