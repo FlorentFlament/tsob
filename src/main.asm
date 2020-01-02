@@ -32,17 +32,14 @@ ptr	ds 2
 frame	ds 2 ; 16 bits frames counter
 curpart ds 1 ; Index of current part (FX)
 
-posintab    	ds 1
-ss_sin       	ds 40
-
 ;;; part-specific RAM starts here
 PARTRAM equ *
 ;;;4 bytes of stack used (Possibly more)
 RAMEND  equ $FC
 	echo "RAM available for parts:", (RAMEND-PARTRAM)d, "bytes"
 
-	;; INCLUDE "fx_intro_variables.asm"
-	;; echo "fx_intro:", (RAMEND-*)d, "bytes left"
+	INCLUDE "fx_vars.asm"
+	echo "fx_flag:", (RAMEND-*)d, "bytes left"
 
 ; Bank switching macro by Tjoppen (slightly adapted)
 RTSBank equ $1FD9
