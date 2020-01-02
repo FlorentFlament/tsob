@@ -38,8 +38,8 @@ PARTRAM equ *
 RAMEND  equ $FC
 	echo "RAM available for parts:", (RAMEND-PARTRAM)d, "bytes"
 
-	INCLUDE "fx_vars.asm"
-	echo "fx_flag:", (RAMEND-*)d, "bytes left"
+	INCLUDE "fx_flag_vars.asm"
+	echo "fx_flag_vars:", (RAMEND-*)d, "bytes left"
 
 ; Bank switching macro by Tjoppen (slightly adapted)
 RTSBank equ $1FD9
@@ -134,7 +134,7 @@ tt_player_proxy_end:
 	INCLUDE "SilverWoman_nogoto_trackdata.asm"
 	echo "zik1:", (*-PARTSTART_ZIK1)d, "B"
 PARTSTART_FLAG equ *
-	INCLUDE "fx.asm"
+	INCLUDE "fx_flag.asm"
 	echo "fx_flag:", (*-PARTSTART_FLAG)d, "B"
 ;; PARTSTART_LAPINKO equ *
 ;; 	INCLUDE "fx_lapinko.asm"
@@ -189,13 +189,13 @@ PARTSTART_ZIK2 equ *
 ; Bank 7
 PARTSTART_MAIN equ *
 inits:
-	.word fx_init ; 0
+	.word fx_flag_init ; 0
 
 vblanks:
-	.word fx_vblank
+	.word fx_flag_vblank
 
 kernels:
-	.word fx_kernel
+	.word fx_flag_kernel
 
 ; specifies on which frame to switch parts
 M_P0  equ 0 			; 256
@@ -288,7 +288,7 @@ wait_timint SUBROUTINE
 	echo "main:", (*-PARTSTART_MAIN)d, "B"
 
 ;; PARTSTART_FLAG equ *
-;;  	INCLUDE "fx.asm"
+;;  	INCLUDE "fx_flag.asm"
 ;;  	echo "fx_flag:", (*-PARTSTART_FLAG)d, "B"
 	echo "Bank 7 :", ((RTSBank + (7 * 8192)) - *)d, "free"
 
