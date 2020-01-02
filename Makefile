@@ -14,3 +14,4 @@ run: main.bin
 
 clean:
 	rm -f main.bin main.lst main.sym
+	find . -name "*~" -exec rm {} \;
