@@ -40,6 +40,8 @@ RAMEND  equ $FC
 
 	INCLUDE "fx_flag_vars.asm"
 	echo "fx_flag_vars:", (RAMEND-*)d, "bytes left"
+	INCLUDE "slideshow_vars.asm"
+	echo "slideshow_vars:", (RAMEND-*)d, "bytes left"
 
 ; Bank switching macro by Tjoppen (slightly adapted)
 RTSBank equ $1FD9
@@ -143,10 +145,9 @@ PARTSTART_FLAG equ *
 
 
 ; Bank 1
-;; PARTSTART_INTRO equ *
-;; 	INCLUDE "fx_intro_ctrl.asm"
-;; 	INCLUDE "fx_intro_kernel.asm"
-;; 	echo "fx_intro:", (*-PARTSTART_INTRO)d, "B"
+PARTSTART_SLIDESHOW equ *
+	INCLUDE "slideshow.asm"
+	echo "slideshow:", (*-PARTSTART_INTRO)d, "B"
 	END_SEGMENT 1
 
 ; Bank 2
@@ -190,20 +191,23 @@ PARTSTART_ZIK2 equ *
 PARTSTART_MAIN equ *
 inits:
 	.word fx_flag_init ; 0
+	.word slideshow_init
 
 vblanks:
 	.word fx_flag_vblank
+	.word slideshow_vblank
 
 kernels:
 	.word fx_flag_kernel
+	.word slideshow_kernel
 
 ; specifies on which frame to switch parts
-M_P0  equ 0 			; 256
-;; M_P1  equ 0
+M_P0  equ 256
+M_P1  equ 0
 
 partswitch:
 	.word M_P0
-	;; .word M_P1
+	.word M_P1
 
 ; Calls current part
 ; unique argument is the stuff to call (inits, vblanks or kernels)
