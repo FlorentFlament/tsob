@@ -12,7 +12,7 @@ fx_init:
                 sta ss_sin,x
                 dex
                 bne .load
-                rts
+                jmp RTSBank
 fx_vblank:
                 lda ss_sin+$1
                 sta posintab
@@ -95,7 +95,7 @@ fx_vblank:
 
                 lda posintab
                 sta ss_sin+$26                
-                rts
+                jmp RTSBank
 
 
 fx_kernel:   
@@ -118,20 +118,21 @@ WaitForVblankEnd
 reloadx 
                 ldx ss_sin,y
 ss_DrawPic      
+                sta WSYNC
+                sty COLUPF
                 lda logo0,Y
                 sta PF0
                 lda logo1,Y
                 sta PF1
                 lda logo2,Y
                 sta PF2
-                sty COLUPF
+                SLEEP 2
                 lda logo3,Y 
                 sta PF0
                 lda logo4,Y
                 sta PF1
                 lda logo5,Y
                 sta PF2
-                sta WSYNC
                 
                 dex
                 bne ss_DrawPic
@@ -139,11 +140,12 @@ ss_DrawPic
                 dey
                 bne reloadx
 
-                rts
+                sta WSYNC
+                jmp RTSBank
 
 fx_overscan:
                 sta WSYNC 
-                rts
+                jmp RTSBank
 
                 include "logo.asm" 
 
@@ -155,5 +157,3 @@ sintab:
                 .byte $4,$4,$4,$5,$5,$5,$6,$6,$6,$7
                 .byte $7,$8,$7,$7,$6,$6,$5,$5,$5,$4
                 .byte $4,$3,$3,$3,$3,$2,$2,$2,$2,$2
-
-                echo "ROM:", ($FFFC - *)d, "bytes left"
