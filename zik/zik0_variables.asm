@@ -18,6 +18,8 @@
 ; Song author: 
 ; Song name: 
 
+; @com.wudsn.ide.asm.hardware=ATARI2600
+
 ; =====================================================================
 ; Flags
 ; =====================================================================
@@ -25,9 +27,9 @@
 ; 1: Global song speed, 0: Each pattern has individual speed
 TT_GLOBAL_SPEED         = 1
 ; duration (number of TV frames) of a note
-TT_SPEED                = 4
+TT_SPEED                = 7
 ; duration of odd frames (needs TT_USE_FUNKTEMPO)
-TT_ODD_SPEED            = 4
+TT_ODD_SPEED            = 7
 
 ; 1: Overlay percussion, +40 bytes
 TT_USE_OVERLAY          = 0

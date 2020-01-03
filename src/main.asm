@@ -20,7 +20,7 @@ GREETZ_PART equ 25
 	ORG $0080
 
 	; Songs variables first
-	INCLUDE "SilverWoman_nogoto_variables.asm"
+	INCLUDE "zik0_variables.asm"
 	INCLUDE "PasteHeck_variables.asm"
 
 ;;; Temporary variables
@@ -130,10 +130,10 @@ PARTSTART_ZIK1 equ *
 	sta AUDC0
 	sta AUDC1
 	jmp tt_player_proxy_end
-	INCLUDE "SilverWoman_nogoto_player.asm"
+	INCLUDE "zik0_player.asm"
 tt_player_proxy_end:
 	jmp RTSBank
-	INCLUDE "SilverWoman_nogoto_trackdata.asm"
+	INCLUDE "zik0_trackdata.asm"
 	echo "zik1:", (*-PARTSTART_ZIK1)d, "B"
 PARTSTART_FLAG equ *
 	INCLUDE "fx_flag.asm"
@@ -225,7 +225,7 @@ partswitch:
 	ENDM
 
 init	CLEAN_START ; Initializes Registers & Memory
-	INCLUDE "SilverWoman_nogoto_init.asm"
+	INCLUDE "zik0_init.asm"
 	lda #START_PART
 	sta curpart
 	call_curpart inits ; Initialize first part
