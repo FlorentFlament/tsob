@@ -21,7 +21,6 @@ GREETZ_PART equ 25
 
 	; Songs variables first
 	INCLUDE "zik0_variables.asm"
-	INCLUDE "PasteHeck_variables.asm"
 
 ;;; Temporary variables
 tmp	equ tt_ptr
@@ -162,11 +161,6 @@ PARTSTART_SLIDESHOW equ *
 ;; 	INCLUDE "fx_greetings_ctrl.asm"
 ;; 	INCLUDE "fx_greetings_kernel.asm"
 ;; 	echo "fx_greetings:", (*-PARTSTART_GREETINGS)d, "B"
-PARTSTART_ZIK2 equ *
-	INCLUDE "PasteHeck_player.asm"
-	jmp RTSBank
-	INCLUDE "PasteHeck_trackdata.asm"
-	echo "zik2:", (*-PARTSTART_ZIK2)d, "B"
 	END_SEGMENT 3
 
 ; Bank 4
@@ -252,15 +246,8 @@ main_loop SUBROUTINE
 	lda #22			; (/ (* 26.0 76) 64) = 30.875
 	sta TIM64T
 
-	; Play song according to the part
-	lda curpart
-	cmp GREETZ_PART
-	beq .greetz_song
-	JSRBank tt_player_proxy
-	jmp .song_chosen
-.greetz_song:
-	JSRBank PasteHeck_tt_PlayerStart
-.song_chosen:
+	JSRBank tt_player_proxy	; Play song
+	
 	m_add_to_pointer frame, #1
 	jsr check_partswitch
 	jsr wait_timint
