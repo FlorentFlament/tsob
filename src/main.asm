@@ -145,12 +145,11 @@ PARTSTART_FLAG equ *
 
 ; Bank 1
 PARTSTART_SLIDESHOW equ *
+	INCLUDE "slideshow-lot1.asm"
+PARTSTART_SLIDESHOW_ENGINE equ *
 	INCLUDE "slideshow.asm"
-	INCLUDE "slideshow-cinema-nova.asm"
-	INCLUDE "slideshow-02.asm"
-	INCLUDE "slideshow-15a.asm"
-	INCLUDE "slideshow-15b.asm"
-	echo "slideshow:", (*-PARTSTART_SLIDESHOW)d, "B"
+	echo "slideshow engine:", (*-PARTSTART_SLIDESHOW_ENGINE)d, "B"
+	echo "slideshow with pics:", (*-PARTSTART_SLIDESHOW)d, "B"
 	END_SEGMENT 1
 
 ; Bank 2
@@ -200,7 +199,7 @@ kernels:
 	.word slideshow_kernel
 
 ; specifies on which frame to switch parts
-M_P0  equ 224+28
+M_P0  equ 224		;+28
 M_P1  equ 0
 
 partswitch:

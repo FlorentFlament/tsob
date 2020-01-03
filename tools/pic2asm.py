@@ -60,58 +60,108 @@ def get_palette():
             l = fd.readline()
     return palette
 
+class Slide:
+    """
+    Fields:
+    * self.colbg
+    * self.colfg
+    * self.pfs
+    * self.prefix
+    """
+
+    def __init__(self, palette, filename):
+        self.palette = palette
+
+        image = Image.open(filename)
+        width, height = image.size
+
+        if width != 40 or height != 40:
+            print("Error: image size expected to be 40x40, but found {}x{}".format(width, height))
+            exit(1)
+
+        # Drop alpha channel
+        data = [p[0:3] for p in image.getdata()]
+
+        self.colbg = []
+        self.colfg = []
+        self.pfs = [[],[],[],[],[],[]]
+
+        for i in range(40): # 40 lines
+            ln = data[i*40 : (i+1)*40] # 40 pixels per line
+            bg, fg = get_colors(ln)
+            bits = [c == fg for c in ln]
+            pfs = get_playfields(bits)
+            vcs_bg = best_palette_match(palette, bg)
+            vcs_fg = best_palette_match(palette, fg) if fg != None else 0x00
+
+            self.colbg.append(vcs_bg)
+            self.colfg.append(vcs_fg)
+            for i in range(6):
+                self.pfs[i].append(pfs[i])
+
+        gfx_name, _ = os.path.splitext(os.path.basename(filename))
+        gfx_name = gfx_name.replace('-','_').replace(' ','').lower()
+        self.prefix = "slideshow_{}".format(gfx_name)
+
+    def dump_colbg(self):
+        print("{}_colbg:".format(self.prefix))
+        print(lst2asm(reversed(self.colbg)))
+
+    def dump_colfg(self):
+        print("{}_colfg:".format(self.prefix))
+        print(lst2asm(reversed(self.colfg)))
+
+    def dump_pfs_i(self, i):
+        print("{}_p{}:".format(self.prefix, i))
+        print(lst2asm(reversed(self.pfs[i])))
+
+    def dump_pfs_all(self):
+        for i in range(6):
+            self.dump_pfs_i(i)
+
+    def dump_ptr(self):
+        print("{}_ptr:".format(self.prefix))
+        print("\tdc.w {}_colbg".format(self.prefix))
+        print("\tdc.w {}_colfg".format(self.prefix))
+        for i  in range(6):
+            print("\tdc.w {}_p{}".format(self.prefix, i))
+
+
 def main():
-    fname = argv[1]
+    # Each pic is made of:
+    # * 8 times 40 Bytes - i.e 320 Bytes
+    # * 16 bytes for the pointers
+    # Each 40 Bytes block can't cross 256 Bytes pages
+    #
+    # We can put 6 blocks + the pointers in one page:
+    # 6 * 40 bytes = 240 bytes + 16 bytes = 256 bytes
+    #
+    # An approach could be to put the PF0-PF5 + pointers of each GFX in a page
+    # Then put colors of 3 GFX per page.
+    #
+    # For instance, let's suppose 11 GFXs. We split them in:
+    # * 11 x 256Bytes pages for playfields + pointers
+    # * 4 pages (3, 3, 3, 2) for the colors (Here we loose 16*3=48 bytes)
+    # * Then the engine
+
+    fnames = argv[1:]
     palette = get_palette()
 
-    image = Image.open(fname)
-    width, height = image.size
+    slides=[]
+    for fn in fnames:
+        slides.append( Slide(palette, fn) )
 
-    if width != 40 or height != 40:
-        print("Error: image size expected to be 40x40, but found {}x{}".format(width, height))
-        exit(1)
+    print("\tALIGN 256 ; In case, but file should be included at the begining of a bank")
+    for s in slides:
+        s.dump_pfs_all()
+        s.dump_ptr()
+        print()
 
-    # Drop alpha channel
-    data = [p[0:3] for p in image.getdata()]
-
-    l_bg = []
-    l_fg = []
-    l_pfss = [[],[],[],[],[],[]]
-
-    for i in range(40): # 40 lines
-        ln = data[i*40 : (i+1)*40] # 40 pixels per line
-        bg, fg = get_colors(ln)
-        bits = [c == fg for c in ln]
-        pfs = get_playfields(bits)
-        vcs_bg = best_palette_match(palette, bg)
-        vcs_fg = best_palette_match(palette, fg) if fg != None else 0x00
-
-        l_bg.append(vcs_bg)
-        l_fg.append(vcs_fg)
-        for i in range(6):
-            l_pfss[i].append(pfs[i])
-
-    gfx_name, _ = os.path.splitext(os.path.basename(fname))
-    gfx_name = gfx_name.replace('-','_').replace(' ','').lower()
-
-    print("slideshow_{}_ptr:".format(gfx_name))
-    print("\tdc.w slideshow_{}_colbg".format(gfx_name))
-    print("\tdc.w slideshow_{}_colpf".format(gfx_name))
-    for i  in range(6):
-        print("\tdc.w slideshow_{}_p{}".format(gfx_name, i))
-
-    print()
-    print("\tALIGN 256")
-    print("slideshow_{}_colbg:".format(gfx_name))
-    print(lst2asm(reversed(l_bg)))
-    print()
-    print("slideshow_{}_colpf:".format(gfx_name))
-    print(lst2asm(reversed(l_fg)))
-    print()
-    print("\tALIGN 256")
-    for i,pfs in enumerate(l_pfss):
-        print("")
-        print("slideshow_{}_p{}:".format(gfx_name, i))
-        print(lst2asm(reversed(pfs)))
+    for i,s in enumerate(slides):
+        if (i%3) == 0:
+            print("\tALIGN 256")
+        s.dump_colbg()
+        s.dump_colfg()
+        print()
 
 main()

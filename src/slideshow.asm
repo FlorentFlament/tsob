@@ -1,16 +1,36 @@
 ;;; 40x40 pixels slideshow
 slideshow_pics_l:
-	dc.b <slideshow_cinema_nova_ptr
+	dc.b <slideshow_01_a_ptr
+	dc.b <slideshow_01_b_ptr
 	dc.b <slideshow_02_ptr
-	dc.b <slideshow_15_a_ptr
-	dc.b <slideshow_15_b_ptr
+	dc.b <slideshow_03_a_ptr
+	dc.b <slideshow_03_b_ptr
+	dc.b <slideshow_03_c_ptr
+	dc.b <slideshow_04_a_ptr
+	dc.b <slideshow_04_b_ptr
+	dc.b <slideshow_05_ptr
+	dc.b <slideshow_06_a_ptr
+	dc.b <slideshow_06_b_ptr
 slideshow_pics_h:
-	dc.b >slideshow_cinema_nova_ptr
+	dc.b >slideshow_01_a_ptr
+	dc.b >slideshow_01_b_ptr
 	dc.b >slideshow_02_ptr
-	dc.b >slideshow_15_a_ptr
-	dc.b >slideshow_15_b_ptr
-
+	dc.b >slideshow_03_a_ptr
+	dc.b >slideshow_03_b_ptr
+	dc.b >slideshow_03_c_ptr
+	dc.b >slideshow_04_a_ptr
+	dc.b >slideshow_04_b_ptr
+	dc.b >slideshow_05_ptr
+	dc.b >slideshow_06_a_ptr
+	dc.b >slideshow_06_b_ptr
 slideshow_pics_t:		; timing
+	dc.b 112
+	dc.b 112
+	dc.b 112
+	dc.b 112
+	dc.b 112
+	dc.b 112
+	dc.b 112
 	dc.b 112
 	dc.b 112
 	dc.b 112
@@ -68,11 +88,12 @@ slideshow_kernel:	SUBROUTINE
 	SLEEP 62
 	ldy 39			;3
 	jmp .outer		;3
-SS_BEFORE_ALIGN equ *
-	ALIGN 256		; Avoid cross page branch
-	echo "ROM lost due to alignment:", (* - SS_BEFORE_ALIGN)d, "bytes"
+;; SS_BEFORE_ALIGN equ *
+;; 	ALIGN 256		; Avoid cross page branch
+;; 	echo "ROM lost due to alignment:", (* - SS_BEFORE_ALIGN)d, "bytes"
 
 SS_OUTER_ADDR equ *
+	echo "slideshow loop start: bock", (*/256)d
 .outer:
 	ldx 5			;3
 .inner:
@@ -99,6 +120,7 @@ SS_OUTER_ADDR equ *
 	;; outer loop 8*8 + 3*2 + 2*3 = 76 vs 76 cycles per line
 	;; inner loop 8*8 + 2 + 3 = 69 machine cycles + 7 proxy
 	echo "Outer loop size:", (* - SS_OUTER_ADDR)d, "bytes"
+	echo "slideshow loop stop: block", (*/256)d
 
 	sta WSYNC
 	lda #$00
