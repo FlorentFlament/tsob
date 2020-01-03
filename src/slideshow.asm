@@ -9,10 +9,17 @@ slideshow_pics_h:
 	dc.b >slideshow_02_ptr
 	dc.b >slideshow_15_a_ptr
 	dc.b >slideshow_15_b_ptr
+slideshow_pics_t:		; timing
+	dc.b 128
+	dc.b 128
+	dc.b 128
+	dc.b 128
 
 ;;; slideshow_cur_pic is the index of the picture to display
 slideshow_prepare_pic:	SUBROUTINE
 	ldy slideshow_cur_pic
+	lda slideshow_pics_t,Y
+	sta slideshow_pic_cnt
 	lda slideshow_pics_l,Y
 	sta ptr
 	lda slideshow_pics_h,Y
@@ -28,12 +35,13 @@ slideshow_prepare_pic:	SUBROUTINE
 	rts
 	
 slideshow_init:	SUBROUTINE
-	lda #$ff
-	sta slideshow_cur_pic
+	ldy #$00
+	sty slideshow_cur_pic
+	jsr slideshow_prepare_pic
 	jmp RTSBank
 
 slideshow_vblank:	SUBROUTINE
-	lda frame
+	dec slideshow_pic_cnt
 	bne .end
 	inc slideshow_cur_pic
 	jsr slideshow_prepare_pic
