@@ -1,4 +1,4 @@
-fx_flag_init:	SUBROUTINE
+fx_flag_init:   SUBROUTINE
                 lda #0
                 sta PF0
                 sta PF1
@@ -99,7 +99,7 @@ fx_flag_vblank: SUBROUTINE
                 jmp RTSBank
 
 
-fx_flag_kernel:	SUBROUTINE
+fx_flag_kernel: SUBROUTINE
 
                 lda  #2
                 sta  WSYNC
@@ -115,12 +115,15 @@ fx_flag_kernel:	SUBROUTINE
                 bne .WaitForVblankEnd
 
 
-                ldy #39
+                ldy #27
 .reloadx
                 ldx fx_flag_ss_sin,y
 .ss_DrawPic
                 sta WSYNC
                 sty COLUPF
+                ;nop
+                ;nop
+
                 lda fx_flag_logo0,Y
                 sta PF0
                 lda fx_flag_logo1,Y
@@ -138,9 +141,66 @@ fx_flag_kernel:	SUBROUTINE
                 dex
                 bne .ss_DrawPic
 
+
+
                 dey
                 bne .reloadx
 
+                ;lda INTIM
+                ;cmp #$f
+                ;bpl .erf
+                ;lda #$b0
+                ;sta COLUBK
+;.erf                
+; 
+                sta WSYNC
+                ;lda #$00
+                ;sta COLUPF
+                ;sta COLUBK
+                ;sta PF0
+                ;sta PF1
+                ;sta PF2
+                lda #$B8
+                sta COLUPF
+
+                ldy #17
+                iny
+                sta WSYNC
+.rexbis
+                ldx fx_flag_ss_sin,y
+                ;ldx #8
+.ss_Drbis
+                sta WSYNC
+                nop
+                nop
+                lda fx_flag_logo0,Y
+                sta PF0
+                lda fx_flag_logo1,Y
+                sta PF1
+                lda fx_flag_logo2,Y
+                sta PF2
+                SLEEP 2
+                lda fx_flag_logo3,Y
+                sta PF0
+                lda fx_flag_logo4,Y
+                sta PF1
+                lda fx_flag_logo5,Y
+                sta PF2
+
+                dex
+                bne .ss_Drbis
+
+                iny
+                cpy #28 ; #18 strobo !
+                bne .rexbis
+                sta WSYNC
+                lda #$00
+                sta COLUPF
+                sta COLUBK
+                sta PF0
+                sta PF1
+                sta PF2
+;
                 sta WSYNC
                 jmp RTSBank
 
