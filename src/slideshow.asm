@@ -9,11 +9,13 @@ slideshow_pics_h:
 	dc.b >slideshow_02_ptr
 	dc.b >slideshow_15_a_ptr
 	dc.b >slideshow_15_b_ptr
+
 slideshow_pics_t:		; timing
-	dc.b 128
-	dc.b 128
-	dc.b 128
-	dc.b 128
+	dc.b 112
+	dc.b 112
+	dc.b 112
+	dc.b 112
+	dc.b 0
 
 ;;; slideshow_cur_pic is the index of the picture to display
 slideshow_prepare_pic:	SUBROUTINE
@@ -44,6 +46,13 @@ slideshow_vblank:	SUBROUTINE
 	dec slideshow_pic_cnt
 	bne .end
 	inc slideshow_cur_pic
+	;; Should we loop ?
+	ldy slideshow_cur_pic
+	lda slideshow_pics_t,Y
+	bne .cont
+	lda #$00
+	sta slideshow_cur_pic
+.cont:	
 	jsr slideshow_prepare_pic
 .end:
 	jmp RTSBank

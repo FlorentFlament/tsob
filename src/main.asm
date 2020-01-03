@@ -200,7 +200,7 @@ kernels:
 	.word slideshow_kernel
 
 ; specifies on which frame to switch parts
-M_P0  equ 256
+M_P0  equ 224+28
 M_P1  equ 0
 
 partswitch:
