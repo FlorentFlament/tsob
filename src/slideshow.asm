@@ -1,16 +1,43 @@
 ;;; 40x40 pixels slideshow
+slideshow_pics_l:
+	dc.b <slideshow_cinema_nova_ptr
+	dc.b <slideshow_02_ptr
+	dc.b <slideshow_15_a_ptr
+	dc.b <slideshow_15_b_ptr
+slideshow_pics_h:
+	dc.b >slideshow_cinema_nova_ptr
+	dc.b >slideshow_02_ptr
+	dc.b >slideshow_15_a_ptr
+	dc.b >slideshow_15_b_ptr
 
-slideshow_init:	SUBROUTINE
+;;; slideshow_cur_pic is the index of the picture to display
+slideshow_prepare_pic:	SUBROUTINE
+	ldy slideshow_cur_pic
+	lda slideshow_pics_l,Y
+	sta ptr
+	lda slideshow_pics_h,Y
+	sta ptr+1
+	
 	;; Copy 8 pointers i.e 16 bytes to slideshow_colbg memory address
 	ldy 15
 .loop:
-	lda slideshow_cinema_nova_ptr,Y
+	lda (ptr),Y
 	sta slideshow_colbg,Y
 	dey
 	bpl .loop
+	rts
+	
+slideshow_init:	SUBROUTINE
+	lda #$ff
+	sta slideshow_cur_pic
 	jmp RTSBank
 
 slideshow_vblank:	SUBROUTINE
+	lda frame
+	bne .end
+	inc slideshow_cur_pic
+	jsr slideshow_prepare_pic
+.end:
 	jmp RTSBank
 
 slideshow_overscan:	SUBROUTINE
@@ -58,6 +85,7 @@ SS_OUTER_ADDR equ *
 
 	sta WSYNC
 	lda #$00
+	sta COLUBK
 	sta COLUPF
 	sta PF0
 	sta PF1

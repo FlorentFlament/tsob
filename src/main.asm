@@ -147,6 +147,9 @@ PARTSTART_FLAG equ *
 PARTSTART_SLIDESHOW equ *
 	INCLUDE "slideshow.asm"
 	INCLUDE "slideshow-cinema-nova.asm"
+	INCLUDE "slideshow-02.asm"
+	INCLUDE "slideshow-15a.asm"
+	INCLUDE "slideshow-15b.asm"
 	echo "slideshow:", (*-PARTSTART_SLIDESHOW)d, "B"
 	END_SEGMENT 1
 

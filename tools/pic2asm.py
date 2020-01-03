@@ -92,7 +92,7 @@ def main():
             l_pfss[i].append(pfs[i])
 
     gfx_name, _ = os.path.splitext(os.path.basename(fname))
-    gfx_name = gfx_name.replace('-','_')
+    gfx_name = gfx_name.replace('-','_').replace(' ','').lower()
 
     print("slideshow_{}_ptr:".format(gfx_name))
     print("\tdc.w slideshow_{}_colbg".format(gfx_name))
