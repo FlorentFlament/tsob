@@ -5,6 +5,7 @@
 	INCLUDE "vcs.h"	; Provides RIOT & TIA memory map
 	INCLUDE "macro.h" ; This file includes some helper macros
 	INCLUDE "my_macros.h"	; Some more generic macros
+	INCLUDE "slideshow-macros.asm"
 
 ; The 2 next constants can be used to ease FXs developments
 ; Use START_PART to select on which part to start the demo
@@ -144,12 +145,15 @@ PARTSTART_FLAG equ *
 
 
 ; Bank 1
-PARTSTART_SLIDESHOW equ *
-	INCLUDE "slideshow-lot1.asm"
-PARTSTART_SLIDESHOW_ENGINE equ *
-	INCLUDE "slideshow.asm"
-	echo "slideshow engine:", (*-PARTSTART_SLIDESHOW_ENGINE)d, "B"
-	echo "slideshow with pics:", (*-PARTSTART_SLIDESHOW)d, "B"
+PARTSTART_SLIDESHOW_DATA equ *
+	INCLUDE "slideshow-lot1-data.asm"
+	echo "slideshow lot1 data:", (*-PARTSTART_SLIDESHOW_DATA)d, "B"
+PARTSTART_SLIDESHOW_TIMELINE equ *
+	INCLUDE "slideshow-lot1-timeline.asm"
+	echo "slideshow lot1 timeline:", (*-PARTSTART_SLIDESHOW_TIMELINE)d, "B"
+PARTSTART_SLIDESHOW_PLAYER equ *
+	INCLUDE "slideshow-lot1-player.asm"
+	echo "slideshow lot1 player:", (*-PARTSTART_SLIDESHOW_PLAYER)d, "B"
 	END_SEGMENT 1
 
 ; Bank 2
@@ -188,15 +192,15 @@ PARTSTART_SLIDESHOW_ENGINE equ *
 PARTSTART_MAIN equ *
 inits:
 	.word fx_flag_init ; 0
-	.word slideshow_init
+	.word slideshow_init_lot1
 
 vblanks:
 	.word fx_flag_vblank
-	.word slideshow_vblank
+	.word slideshow_vblank_lot1
 
 kernels:
 	.word fx_flag_kernel
-	.word slideshow_kernel
+	.word slideshow_kernel_lot1
 
 ; specifies on which frame to switch parts
 M_P0  equ 224		;+28
