@@ -1,14 +1,14 @@
 ;;; 40x40 pixels slideshow
 
 slideshow_init:	SUBROUTINE
-	SET_POINTER slideshow_colbg, slideshow_test_bg
-	SET_POINTER slideshow_colpf, slideshow_test_data0
-	SET_POINTER slideshow_p0, slideshow_test_data0
-	SET_POINTER slideshow_p1, slideshow_test_data1
-	SET_POINTER slideshow_p2, slideshow_test_data0
-	SET_POINTER slideshow_p3, slideshow_test_data1
-	SET_POINTER slideshow_p4, slideshow_test_data0
-	SET_POINTER slideshow_p5, slideshow_test_data1
+	SET_POINTER slideshow_colbg, slideshow_cinema_nova_colbg
+	SET_POINTER slideshow_colpf, slideshow_cinema_nova_colpf
+	SET_POINTER slideshow_p0, slideshow_cinema_nova_p0
+	SET_POINTER slideshow_p1, slideshow_cinema_nova_p1
+	SET_POINTER slideshow_p2, slideshow_cinema_nova_p2
+	SET_POINTER slideshow_p3, slideshow_cinema_nova_p3
+	SET_POINTER slideshow_p4, slideshow_cinema_nova_p4
+	SET_POINTER slideshow_p5, slideshow_cinema_nova_p5
 	jmp RTSBank
 
 slideshow_vblank:	SUBROUTINE
@@ -69,25 +69,3 @@ SS_OUTER_ADDR equ *
 	nop			;2
 	nop			;2
 	jmp .inner		;3
-
-
-slideshow_test_data0
-	dc.b $aa, $aa, $aa, $aa, $aa, $aa, $aa, $aa
-	dc.b $aa, $aa, $aa, $aa, $aa, $aa, $aa, $aa
-	dc.b $aa, $aa, $aa, $aa, $aa, $aa, $aa, $aa
-	dc.b $aa, $aa, $aa, $aa, $aa, $aa, $aa, $aa
-	dc.b $aa, $aa, $aa, $aa, $aa, $aa, $aa, $aa
-
-slideshow_test_data1	
-	dc.b $55, $55, $55, $55, $55, $55, $55, $55
-	dc.b $55, $55, $55, $55, $55, $55, $55, $55
-	dc.b $55, $55, $55, $55, $55, $55, $55, $55
-	dc.b $55, $55, $55, $55, $55, $55, $55, $55
-	dc.b $55, $55, $55, $55, $55, $55, $55, $55
-
-slideshow_test_bg:	
-	dc.b $00, $ff, $00, $ff, $00, $ff, $00, $ff
-	dc.b $00, $ff, $00, $ff, $00, $ff, $00, $ff
-	dc.b $00, $ff, $00, $ff, $00, $ff, $00, $ff
-	dc.b $00, $ff, $00, $ff, $00, $ff, $00, $ff
-	dc.b $00, $ff, $00, $ff, $00, $ff, $00, $ff
