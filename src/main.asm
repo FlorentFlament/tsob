@@ -169,10 +169,15 @@ PARTSTART_SLIDESHOW_LOT2_PLAYER equ *
 	END_SEGMENT 2
 
 ; Bank 3
-;; PARTSTART_GREETINGS equ *
-;; 	INCLUDE "fx_greetings_ctrl.asm"
-;; 	INCLUDE "fx_greetings_kernel.asm"
-;; 	echo "fx_greetings:", (*-PARTSTART_GREETINGS)d, "B"
+PARTSTART_SLIDESHOW_LOT3_DATA equ *
+	INCLUDE "slideshow-lot3-data.asm"
+	echo "slideshow lot3 data:", (*-PARTSTART_SLIDESHOW_LOT3_DATA)d, "B"
+PARTSTART_SLIDESHOW_LOT3_TIMELINE equ *
+	INCLUDE "slideshow-lot3-timeline.asm"
+	echo "slideshow lot3 timeline:", (*-PARTSTART_SLIDESHOW_LOT3_TIMELINE)d, "B"
+PARTSTART_SLIDESHOW_LOT3_PLAYER equ *
+	INCLUDE "slideshow-lot3-player.asm"
+	echo "slideshow lot3 player:", (*-PARTSTART_SLIDESHOW_LOT3_PLAYER)d, "B"
 	END_SEGMENT 3
 
 ; Bank 4
@@ -200,25 +205,31 @@ inits:
 	.word fx_flag_init ; 0
 	.word slideshow_init_lot1
 	.word slideshow_init_lot2
+	.word slideshow_init_lot3
 
 vblanks:
 	.word fx_flag_vblank
 	.word slideshow_vblank_lot1
 	.word slideshow_vblank_lot2
+	.word slideshow_vblank_lot3
 
 kernels:
 	.word fx_flag_kernel
 	.word slideshow_kernel_lot1
 	.word slideshow_kernel_lot2
+	.word slideshow_kernel_lot3
 
 ; specifies on which frame to switch parts
-M_P0  equ 224		;+28
+M_P0  equ 224
 M_P1  equ M_P0 + 1008
-M_P2  equ 0	
+M_P2  equ M_P1 + 1008
+M_P3  equ 0
 
 partswitch:
 	.word M_P0
 	.word M_P1
+	.word M_P2
+	.word M_P3
 
 ; Calls current part
 ; unique argument is the stuff to call (inits, vblanks or kernels)
@@ -263,7 +274,7 @@ main_loop SUBROUTINE
 	sta TIM64T
 
 	JSRBank tt_player_proxy	; Play song
-	
+
 	m_add_to_pointer frame, #1
 	jsr check_partswitch
 	jsr wait_timint
