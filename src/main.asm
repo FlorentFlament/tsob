@@ -145,21 +145,27 @@ PARTSTART_FLAG equ *
 
 
 ; Bank 1
-PARTSTART_SLIDESHOW_DATA equ *
+PARTSTART_SLIDESHOW_LOT1_DATA equ *
 	INCLUDE "slideshow-lot1-data.asm"
-	echo "slideshow lot1 data:", (*-PARTSTART_SLIDESHOW_DATA)d, "B"
-PARTSTART_SLIDESHOW_TIMELINE equ *
+	echo "slideshow lot1 data:", (*-PARTSTART_SLIDESHOW_LOT1_DATA)d, "B"
+PARTSTART_SLIDESHOW_LOT1_TIMELINE equ *
 	INCLUDE "slideshow-lot1-timeline.asm"
-	echo "slideshow lot1 timeline:", (*-PARTSTART_SLIDESHOW_TIMELINE)d, "B"
-PARTSTART_SLIDESHOW_PLAYER equ *
+	echo "slideshow lot1 timeline:", (*-PARTSTART_SLIDESHOW_LOT1_TIMELINE)d, "B"
+PARTSTART_SLIDESHOW_LOT1_PLAYER equ *
 	INCLUDE "slideshow-lot1-player.asm"
-	echo "slideshow lot1 player:", (*-PARTSTART_SLIDESHOW_PLAYER)d, "B"
+	echo "slideshow lot1 player:", (*-PARTSTART_SLIDESHOW_LOT1_PLAYER)d, "B"
 	END_SEGMENT 1
 
 ; Bank 2
-;; PARTSTART_PLASMA equ *
-	;; INCLUDE "fx_plasma.asm"
-	;; echo "fx_plasma:", (*-PARTSTART_PLASMA)d, "B"
+PARTSTART_SLIDESHOW_LOT2_DATA equ *
+	INCLUDE "slideshow-lot2-data.asm"
+	echo "slideshow lot2 data:", (*-PARTSTART_SLIDESHOW_LOT2_DATA)d, "B"
+PARTSTART_SLIDESHOW_LOT2_TIMELINE equ *
+	INCLUDE "slideshow-lot2-timeline.asm"
+	echo "slideshow lot2 timeline:", (*-PARTSTART_SLIDESHOW_LOT2_TIMELINE)d, "B"
+PARTSTART_SLIDESHOW_LOT2_PLAYER equ *
+	INCLUDE "slideshow-lot2-player.asm"
+	echo "slideshow lot2 player:", (*-PARTSTART_SLIDESHOW_LOT2_PLAYER)d, "B"
 	END_SEGMENT 2
 
 ; Bank 3
@@ -193,18 +199,22 @@ PARTSTART_MAIN equ *
 inits:
 	.word fx_flag_init ; 0
 	.word slideshow_init_lot1
+	.word slideshow_init_lot2
 
 vblanks:
 	.word fx_flag_vblank
 	.word slideshow_vblank_lot1
+	.word slideshow_vblank_lot2
 
 kernels:
 	.word fx_flag_kernel
 	.word slideshow_kernel_lot1
+	.word slideshow_kernel_lot2
 
 ; specifies on which frame to switch parts
 M_P0  equ 224		;+28
-M_P1  equ 0
+M_P1  equ M_P0 + 1008
+M_P2  equ 0	
 
 partswitch:
 	.word M_P0

@@ -32,12 +32,11 @@
 	dec slideshow_pic_cnt
 	bne .end
 	inc slideshow_cur_pic
-	;; Should we loop ?
+	;; Should we stay ?
 	ldy slideshow_cur_pic
 	lda slideshow_{1}_t,Y
 	bne .cont
-	lda #$00
-	sta slideshow_cur_pic
+	dec slideshow_cur_pic
 .cont:
 	jsr slideshow_prepare_pic_{1}
 .end:
