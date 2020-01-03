@@ -1,14 +1,13 @@
 ;;; 40x40 pixels slideshow
 
 slideshow_init:	SUBROUTINE
-	SET_POINTER slideshow_colbg, slideshow_cinema_nova_colbg
-	SET_POINTER slideshow_colpf, slideshow_cinema_nova_colpf
-	SET_POINTER slideshow_p0, slideshow_cinema_nova_p0
-	SET_POINTER slideshow_p1, slideshow_cinema_nova_p1
-	SET_POINTER slideshow_p2, slideshow_cinema_nova_p2
-	SET_POINTER slideshow_p3, slideshow_cinema_nova_p3
-	SET_POINTER slideshow_p4, slideshow_cinema_nova_p4
-	SET_POINTER slideshow_p5, slideshow_cinema_nova_p5
+	;; Copy 8 pointers i.e 16 bytes to slideshow_colbg memory address
+	ldy 15
+.loop:
+	lda slideshow_cinema_nova_ptr,Y
+	sta slideshow_colbg,Y
+	dey
+	bpl .loop
 	jmp RTSBank
 
 slideshow_vblank:	SUBROUTINE

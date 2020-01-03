@@ -1,3 +1,13 @@
+slideshow_cinema_nova_ptr:
+	dc.w slideshow_cinema_nova_colbg
+	dc.w slideshow_cinema_nova_colpf
+	dc.w slideshow_cinema_nova_p0
+	dc.w slideshow_cinema_nova_p1
+	dc.w slideshow_cinema_nova_p2
+	dc.w slideshow_cinema_nova_p3
+	dc.w slideshow_cinema_nova_p4
+	dc.w slideshow_cinema_nova_p5
+
 	ALIGN 256
 slideshow_cinema_nova_colbg:
 	dc.b $00, $00, $00, $00, $00, $00, $00, $00

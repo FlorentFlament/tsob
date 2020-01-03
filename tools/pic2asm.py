@@ -93,13 +93,21 @@ def main():
 
     gfx_name, _ = os.path.splitext(os.path.basename(fname))
     gfx_name = gfx_name.replace('-','_')
+
+    print("slideshow_{}_ptr:".format(gfx_name))
+    print("\tdc.w slideshow_{}_colbg".format(gfx_name))
+    print("\tdc.w slideshow_{}_colpf".format(gfx_name))
+    for i  in range(6):
+        print("\tdc.w slideshow_{}_p{}".format(gfx_name, i))
+
+    print()
     print("\tALIGN 256")
     print("slideshow_{}_colbg:".format(gfx_name))
     print(lst2asm(reversed(l_bg)))
-    print("")
+    print()
     print("slideshow_{}_colpf:".format(gfx_name))
     print(lst2asm(reversed(l_fg)))
-    print("")
+    print()
     print("\tALIGN 256")
     for i,pfs in enumerate(l_pfss):
         print("")
