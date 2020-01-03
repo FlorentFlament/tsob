@@ -1,40 +1,136 @@
 ;;; 40x40 pixels slideshow
 slideshow_pics_l:
+	dc.b <slideshow_01_b_ptr
 	dc.b <slideshow_01_a_ptr
 	dc.b <slideshow_01_b_ptr
+	dc.b <slideshow_01_a_ptr
+	dc.b <slideshow_01_b_ptr
+	dc.b <slideshow_01_a_ptr
+	dc.b <slideshow_01_b_ptr
+	dc.b <slideshow_01_a_ptr
+	dc.b <slideshow_01_b_ptr
+	dc.b <slideshow_01_a_ptr
+	dc.b <slideshow_01_b_ptr
+	dc.b <slideshow_01_a_ptr
+	dc.b <slideshow_01_b_ptr
+	dc.b <slideshow_01_a_ptr
+	dc.b <slideshow_01_b_ptr
+	dc.b <slideshow_01_a_ptr
+
 	dc.b <slideshow_02_ptr
+
 	dc.b <slideshow_03_a_ptr
+
+	;; Bonhomme new beat
 	dc.b <slideshow_03_b_ptr
 	dc.b <slideshow_03_c_ptr
+	dc.b <slideshow_03_b_ptr
+	dc.b <slideshow_03_c_ptr
+
 	dc.b <slideshow_04_a_ptr
 	dc.b <slideshow_04_b_ptr
+	dc.b <slideshow_04_a_ptr
+	dc.b <slideshow_04_b_ptr
+	dc.b <slideshow_04_a_ptr
+	dc.b <slideshow_04_b_ptr
+	dc.b <slideshow_04_a_ptr
+	dc.b <slideshow_04_b_ptr
+
 	dc.b <slideshow_05_ptr
+
+	;; Drapeau
+	dc.b <slideshow_06_a_ptr
+	dc.b <slideshow_06_b_ptr
 	dc.b <slideshow_06_a_ptr
 	dc.b <slideshow_06_b_ptr
 slideshow_pics_h:
+	dc.b >slideshow_01_b_ptr
 	dc.b >slideshow_01_a_ptr
 	dc.b >slideshow_01_b_ptr
+	dc.b >slideshow_01_a_ptr
+	dc.b >slideshow_01_b_ptr
+	dc.b >slideshow_01_a_ptr
+	dc.b >slideshow_01_b_ptr
+	dc.b >slideshow_01_a_ptr
+	dc.b >slideshow_01_b_ptr
+	dc.b >slideshow_01_a_ptr
+	dc.b >slideshow_01_b_ptr
+	dc.b >slideshow_01_a_ptr
+	dc.b >slideshow_01_b_ptr
+	dc.b >slideshow_01_a_ptr
+	dc.b >slideshow_01_b_ptr
+	dc.b >slideshow_01_a_ptr
+
 	dc.b >slideshow_02_ptr
+
 	dc.b >slideshow_03_a_ptr
+
+	;; Bonhomme new beat
 	dc.b >slideshow_03_b_ptr
 	dc.b >slideshow_03_c_ptr
+	dc.b >slideshow_03_b_ptr
+	dc.b >slideshow_03_c_ptr
+
 	dc.b >slideshow_04_a_ptr
 	dc.b >slideshow_04_b_ptr
+	dc.b >slideshow_04_a_ptr
+	dc.b >slideshow_04_b_ptr
+	dc.b >slideshow_04_a_ptr
+	dc.b >slideshow_04_b_ptr
+	dc.b >slideshow_04_a_ptr
+	dc.b >slideshow_04_b_ptr
+
 	dc.b >slideshow_05_ptr
+
+	;; Drapeau
+	dc.b >slideshow_06_a_ptr
+	dc.b >slideshow_06_b_ptr
 	dc.b >slideshow_06_a_ptr
 	dc.b >slideshow_06_b_ptr
 slideshow_pics_t:		; timing
+	dc.b 14
+	dc.b 14
+	dc.b 14
+	dc.b 14
+	dc.b 14
+	dc.b 14
+	dc.b 14
+	dc.b 14
+	dc.b 14
+	dc.b 14
+	dc.b 14
+	dc.b 14
+	dc.b 14
+	dc.b 14
+	dc.b 14
+	dc.b 14
+
 	dc.b 112
+
 	dc.b 112
+
+	;; Bonhomme new beat
+	dc.b 28
+	dc.b 28
+	dc.b 28
+	dc.b 28
+
+	dc.b 14
+	dc.b 14
+	dc.b 14
+	dc.b 14
+	dc.b 14
+	dc.b 14
+	dc.b 14
+	dc.b 14
+
 	dc.b 112
-	dc.b 112
-	dc.b 112
-	dc.b 112
-	dc.b 112
-	dc.b 112
-	dc.b 112
-	dc.b 112
-	dc.b 112
+
+	;; Drapeau
+	dc.b 56
+	dc.b 56
+	dc.b 56
+	dc.b 56
 	dc.b 0
 
 ;;; slideshow_cur_pic is the index of the picture to display
@@ -46,7 +142,7 @@ slideshow_prepare_pic:	SUBROUTINE
 	sta ptr
 	lda slideshow_pics_h,Y
 	sta ptr+1
-	
+
 	;; Copy 8 pointers i.e 16 bytes to slideshow_colbg memory address
 	ldy 15
 .loop:
@@ -55,7 +151,7 @@ slideshow_prepare_pic:	SUBROUTINE
 	dey
 	bpl .loop
 	rts
-	
+
 slideshow_init:	SUBROUTINE
 	ldy #$00
 	sty slideshow_cur_pic
@@ -72,14 +168,14 @@ slideshow_vblank:	SUBROUTINE
 	bne .cont
 	lda #$00
 	sta slideshow_cur_pic
-.cont:	
+.cont:
 	jsr slideshow_prepare_pic
 .end:
 	jmp RTSBank
 
 slideshow_overscan:	SUBROUTINE
 	jmp RTSBank
-	
+
 ;;; We need 7 pointers, one per playfield column:
 ;;; slideshow_p0, slideshow_p1, ...
 ;;; slideshow_colpf, slideshow_colbg
