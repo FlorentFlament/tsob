@@ -9,3 +9,4 @@
 "../gfx/xport/31 - B.png" \
 "../gfx/xport/31 - C.png" \
 "../gfx/xport/31 - D.png" \
+"../gfx/xport/32.png" \
