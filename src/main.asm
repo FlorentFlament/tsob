@@ -120,87 +120,45 @@ JMPBank equ $1FE6
 ; Bank 0
 	ORG $1000
 	RORG $1000
-PARTSTART_SLIDESHOW_LOT7_DATA equ *
 	INCLUDE "slideshow-lot7-data.asm"
-	echo "slideshow lot7 data:", (*-PARTSTART_SLIDESHOW_LOT7_DATA)d, "B"
-PARTSTART_SLIDESHOW_LOT7_TIMELINE equ *
 	INCLUDE "slideshow-lot7-timeline.asm"
-	echo "slideshow lot7 timeline:", (*-PARTSTART_SLIDESHOW_LOT7_TIMELINE)d, "B"
-PARTSTART_SLIDESHOW_LOT7_PLAYER equ *
 	INCLUDE "slideshow-lot7-player.asm"
-	echo "slideshow lot7 player:", (*-PARTSTART_SLIDESHOW_LOT7_PLAYER)d, "B"
 	END_SEGMENT 0
 
 ; Bank 1
-PARTSTART_SLIDESHOW_LOT1_DATA equ *
 	INCLUDE "slideshow-lot1-data.asm"
-	echo "slideshow lot1 data:", (*-PARTSTART_SLIDESHOW_LOT1_DATA)d, "B"
-PARTSTART_SLIDESHOW_LOT1_TIMELINE equ *
 	INCLUDE "slideshow-lot1-timeline.asm"
-	echo "slideshow lot1 timeline:", (*-PARTSTART_SLIDESHOW_LOT1_TIMELINE)d, "B"
-PARTSTART_SLIDESHOW_LOT1_PLAYER equ *
 	INCLUDE "slideshow-lot1-player.asm"
-	echo "slideshow lot1 player:", (*-PARTSTART_SLIDESHOW_LOT1_PLAYER)d, "B"
 	END_SEGMENT 1
 
 ; Bank 2
-PARTSTART_SLIDESHOW_LOT2_DATA equ *
 	INCLUDE "slideshow-lot2-data.asm"
-	echo "slideshow lot2 data:", (*-PARTSTART_SLIDESHOW_LOT2_DATA)d, "B"
-PARTSTART_SLIDESHOW_LOT2_TIMELINE equ *
 	INCLUDE "slideshow-lot2-timeline.asm"
-	echo "slideshow lot2 timeline:", (*-PARTSTART_SLIDESHOW_LOT2_TIMELINE)d, "B"
-PARTSTART_SLIDESHOW_LOT2_PLAYER equ *
 	INCLUDE "slideshow-lot2-player.asm"
-	echo "slideshow lot2 player:", (*-PARTSTART_SLIDESHOW_LOT2_PLAYER)d, "B"
 	END_SEGMENT 2
 
 ; Bank 3
-PARTSTART_SLIDESHOW_LOT3_DATA equ *
 	INCLUDE "slideshow-lot3-data.asm"
-	echo "slideshow lot3 data:", (*-PARTSTART_SLIDESHOW_LOT3_DATA)d, "B"
-PARTSTART_SLIDESHOW_LOT3_TIMELINE equ *
 	INCLUDE "slideshow-lot3-timeline.asm"
-	echo "slideshow lot3 timeline:", (*-PARTSTART_SLIDESHOW_LOT3_TIMELINE)d, "B"
-PARTSTART_SLIDESHOW_LOT3_PLAYER equ *
 	INCLUDE "slideshow-lot3-player.asm"
-	echo "slideshow lot3 player:", (*-PARTSTART_SLIDESHOW_LOT3_PLAYER)d, "B"
 	END_SEGMENT 3
 
 ; Bank 4
-PARTSTART_SLIDESHOW_LOT4_DATA equ *
 	INCLUDE "slideshow-lot4-data.asm"
-	echo "slideshow lot4 data:", (*-PARTSTART_SLIDESHOW_LOT4_DATA)d, "B"
-PARTSTART_SLIDESHOW_LOT4_TIMELINE equ *
 	INCLUDE "slideshow-lot4-timeline.asm"
-	echo "slideshow lot4 timeline:", (*-PARTSTART_SLIDESHOW_LOT4_TIMELINE)d, "B"
-PARTSTART_SLIDESHOW_LOT4_PLAYER equ *
 	INCLUDE "slideshow-lot4-player.asm"
-	echo "slideshow lot4 player:", (*-PARTSTART_SLIDESHOW_LOT4_PLAYER)d, "B"
 	END_SEGMENT 4
 
 ; Bank 5
-PARTSTART_SLIDESHOW_LOT5_DATA equ *
 	INCLUDE "slideshow-lot5-data.asm"
-	echo "slideshow lot5 data:", (*-PARTSTART_SLIDESHOW_LOT5_DATA)d, "B"
-PARTSTART_SLIDESHOW_LOT5_TIMELINE equ *
 	INCLUDE "slideshow-lot5-timeline.asm"
-	echo "slideshow lot5 timeline:", (*-PARTSTART_SLIDESHOW_LOT5_TIMELINE)d, "B"
-PARTSTART_SLIDESHOW_LOT5_PLAYER equ *
 	INCLUDE "slideshow-lot5-player.asm"
-	echo "slideshow lot5 player:", (*-PARTSTART_SLIDESHOW_LOT5_PLAYER)d, "B"
 	END_SEGMENT 5
 
 ; Bank 6
-PARTSTART_SLIDESHOW_LOT6_DATA equ *
 	INCLUDE "slideshow-lot6-data.asm"
-	echo "slideshow lot6 data:", (*-PARTSTART_SLIDESHOW_LOT6_DATA)d, "B"
-PARTSTART_SLIDESHOW_LOT6_TIMELINE equ *
 	INCLUDE "slideshow-lot6-timeline.asm"
-	echo "slideshow lot6 timeline:", (*-PARTSTART_SLIDESHOW_LOT6_TIMELINE)d, "B"
-PARTSTART_SLIDESHOW_LOT6_PLAYER equ *
 	INCLUDE "slideshow-lot6-player.asm"
-	echo "slideshow lot6 player:", (*-PARTSTART_SLIDESHOW_LOT6_PLAYER)d, "B"
 	END_SEGMENT 6
 
 ; Bank 7

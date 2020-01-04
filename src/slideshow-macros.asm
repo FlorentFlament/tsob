@@ -52,11 +52,8 @@
 	SLEEP 62
 	ldy 39			;3
 	jmp .outer		;3
-;; SS_BEFORE_ALIGN equ *
-;; 	ALIGN 256		; Avoid cross page branch
-;; 	echo "ROM lost due to alignment:", (* - SS_BEFORE_ALIGN)d, "bytes"
 
-	echo "slideshow loop start: bock", (*/256)d
+	;; echo "slideshow loop start: bock", (*/256)d
 .outer:
 	ldx 5			;3
 .inner:
@@ -82,7 +79,7 @@
 	bpl .outer		;2/3
 	;; outer loop 8*8 + 3*2 + 2*3 = 76 vs 76 cycles per line
 	;; inner loop 8*8 + 2 + 3 = 69 machine cycles + 7 proxy
-	echo "slideshow loop stop: block", (*/256)d
+	;; echo "slideshow loop stop: block", (*/256)d
 
 	sta WSYNC
 	lda #$00
