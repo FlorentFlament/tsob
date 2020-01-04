@@ -218,7 +218,7 @@ kernels:
 M_P0  equ 224
 M_P1  equ M_P0 + 1008
 M_P2  equ M_P1 + 1008
-M_P3  equ M_P2 + 1120
+M_P3  equ M_P2 + 1008
 M_P4  equ M_P3 + 1232
 M_P5  equ M_P4 + 1232
 M_P6  equ M_P5 + 1232

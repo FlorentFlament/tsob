@@ -15,6 +15,8 @@ slideshow_lot3_l
 
 	dc.b <slideshow_14_a_ptr
 	dc.b <slideshow_14_b_ptr
+	dc.b <slideshow_14_a_ptr
+	dc.b <slideshow_14_b_ptr
 
 	;; Gaston
 	dc.b <slideshow_15_a_ptr
@@ -51,6 +53,8 @@ slideshow_lot3_h:
 
 	dc.b >slideshow_14_a_ptr
 	dc.b >slideshow_14_b_ptr
+	dc.b >slideshow_14_a_ptr
+	dc.b >slideshow_14_b_ptr
 
 	;; Gaston
 	dc.b >slideshow_15_a_ptr
@@ -85,8 +89,10 @@ slideshow_lot3_t:
 	dc.b 14
 	dc.b 14
 
-	dc.b 112
-	dc.b 112
+	dc.b 56
+	dc.b 56
+	dc.b 56
+	dc.b 56
 
 	;; Gaston
 	dc.b 56
@@ -98,13 +104,13 @@ slideshow_lot3_t:
 
 	;; Chicon
 	dc.b 56
-	dc.b 28
-	dc.b 28
-	dc.b 28
-	dc.b 28
+	dc.b 14
+	dc.b 14
+	dc.b 14
+	dc.b 14
 	dc.b 56
-	dc.b 28
-	dc.b 28
-	dc.b 28
-	dc.b 28
+	dc.b 14
+	dc.b 14
+	dc.b 14
+	dc.b 14
 	dc.b 0			; end
