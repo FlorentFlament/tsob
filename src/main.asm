@@ -12,8 +12,7 @@
 ; Set SINGLE_PART to 1 to disable parts switching
 START_PART  equ 0 ; default 0
 SINGLE_PART equ 0 ; default 0
-ENDMAIN_PART equ 24 ; Turn off soundtrack if reached last track
-GREETZ_PART equ 25
+ENDMAIN_PART equ 8 ; Turn off soundtrack if reached last track
 
 ;;;-----------------------------------------------------------------------------
 ;;; RAM segment
@@ -180,10 +179,10 @@ tt_player_proxy_end:
 PARTSTART_FLAG equ *
 	INCLUDE "fx_flag.asm"
 	echo "fx_flag:", (*-PARTSTART_FLAG)d, "B"
-	
+
 PARTSTART_MAIN equ *
 inits:
-	.word fx_flag_init ; 0
+	.word fx_flag_init
 	.word slideshow_init_lot1
 	.word slideshow_init_lot2
 	.word slideshow_init_lot3
@@ -191,6 +190,7 @@ inits:
 	.word slideshow_init_lot5
 	.word slideshow_init_lot6
 	.word slideshow_init_lot7
+	.word fx_flag_init
 
 vblanks:
 	.word fx_flag_vblank
@@ -201,6 +201,7 @@ vblanks:
 	.word slideshow_vblank_lot5
 	.word slideshow_vblank_lot6
 	.word slideshow_vblank_lot7
+	.word fx_flag_vblank
 
 kernels:
 	.word fx_flag_kernel
@@ -211,6 +212,7 @@ kernels:
 	.word slideshow_kernel_lot5
 	.word slideshow_kernel_lot6
 	.word slideshow_kernel_lot7
+	.word fx_flag_kernel
 
 ; specifies on which frame to switch parts
 M_P0  equ 224
@@ -220,7 +222,8 @@ M_P3  equ M_P2 + 1120
 M_P4  equ M_P3 + 1232
 M_P5  equ M_P4 + 1232
 M_P6  equ M_P5 + 1232
-M_P7  equ 0
+M_P7  equ M_P6 + 1232
+M_P8  equ 0
 
 partswitch:
 	.word M_P0
