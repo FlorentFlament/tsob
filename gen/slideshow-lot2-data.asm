@@ -526,11 +526,11 @@ slideshow_08_colbg:
 	dc.b $b8, $b8, $b8, $b8, $b8, $b8, $b8, $b8
 	dc.b $b8, $b8, $b8, $b8, $b8, $b8, $b8, $b8
 slideshow_08_colfg:
-	dc.b $0c, $0c, $0c, $0c, $0c, $0c, $0c, $0c
-	dc.b $0c, $0c, $0c, $0c, $0c, $0c, $0c, $0c
-	dc.b $0c, $0c, $0c, $0c, $0c, $0c, $0c, $0c
-	dc.b $0c, $0c, $0c, $0c, $0c, $0c, $0c, $0c
-	dc.b $0c, $0c, $0c, $0c, $0c, $0c, $0c, $0c
+	dc.b $06, $08, $08, $08, $0a, $0a, $0a, $0a
+	dc.b $0c, $0c, $0c, $0c, $0a, $06, $08, $0a
+	dc.b $0c, $0c, $0c, $0a, $06, $08, $0a, $0c
+	dc.b $0c, $0c, $0c, $0c, $0a, $06, $08, $0a
+	dc.b $0c, $0c, $0c, $0a, $06, $08, $0a, $0c
 
 slideshow_09_a_colbg:
 	dc.b $00, $00, $00, $00, $00, $00, $00, $00
