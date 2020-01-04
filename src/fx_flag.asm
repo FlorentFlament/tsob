@@ -4,7 +4,7 @@ fx_flag_init:   SUBROUTINE
                 sta PF1
                 sta PF2
                 sta COLUBK
-                lda #$FC
+                lda #$FF
                 sta COLUPF
 
                 lda #$A2
@@ -109,7 +109,7 @@ fx_flag_kernel: SUBROUTINE
                 sta  WSYNC
                 sta  WSYNC
                 sta  WSYNC
-                lda #$FA
+                lda #$FF
                 sta COLUPF
 
                 ldx #30
