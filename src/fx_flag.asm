@@ -112,7 +112,7 @@ fx_flag_kernel: SUBROUTINE
                 lda #$FF
                 sta COLUPF
 
-                ldx #30
+                ldx #25
 .WaitForVblankEnd
                 sta WSYNC
                 dex
@@ -122,8 +122,8 @@ fx_flag_kernel: SUBROUTINE
                 lda #200
                 sta fx_lvl
 
-                sta WSYNC
-                sta WSYNC
+                ;sta WSYNC
+                ;sta WSYNC
                 sta WSYNC
                 ldy #15
 .reloadx
