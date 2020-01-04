@@ -4,7 +4,7 @@ fx_flag_init:   SUBROUTINE
                 sta PF1
                 sta PF2
                 sta COLUBK
-                lda #$FF
+                lda #$FC
                 sta COLUPF
 
                 ldx #39
@@ -105,7 +105,7 @@ fx_flag_kernel: SUBROUTINE
                 sta  WSYNC
                 sta  WSYNC
                 sta  WSYNC
-                lda #$FF
+                lda #$FA
                 sta COLUPF
 
                 ldx #30
@@ -114,16 +114,22 @@ fx_flag_kernel: SUBROUTINE
                 dex
                 bne .WaitForVblankEnd
 
+                lda #200
+                sta fx_lvl
 
-                ldy #27
+                sta WSYNC
+                sta WSYNC
+                sta WSYNC
+                ldy #15
 .reloadx
-                ldx fx_flag_ss_sin,y
+                ;ldx fx_flag_ss_sin,y
+                ldx #6
 .ss_DrawPic
                 sta WSYNC
-                sty COLUPF
+                dec fx_lvl
+                ;sty COLUPF
                 ;nop
                 ;nop
-
                 lda fx_flag_logo0,Y
                 sta PF0
                 lda fx_flag_logo1,Y
@@ -141,38 +147,35 @@ fx_flag_kernel: SUBROUTINE
                 dex
                 bne .ss_DrawPic
 
-
-
                 dey
                 bne .reloadx
 
-                ;lda INTIM
-                ;cmp #$f
-                ;bpl .erf
-                ;lda #$b0
-                ;sta COLUBK
-;.erf                
-; 
-                sta WSYNC
-                ;lda #$00
-                ;sta COLUPF
-                ;sta COLUBK
-                ;sta PF0
-                ;sta PF1
-                ;sta PF2
-                lda #$B8
+                lda #$00
+                sta PF0
+                sta PF1
+                sta PF2
+                sta WSYNC                
+                lda #$B0
+                sta COLUBK
+                lda #$B2
                 sta COLUPF
 
-                ldy #17
+                sta WSYNC
+                sta WSYNC
+                sta WSYNC 
+
+                ldy #0 
                 iny
                 sta WSYNC
+                
 .rexbis
                 ldx fx_flag_ss_sin,y
                 ;ldx #8
 .ss_Drbis
                 sta WSYNC
-                nop
-                nop
+                dec fx_lvl      
+                ;nop
+                ;nop
                 lda fx_flag_logo0,Y
                 sta PF0
                 lda fx_flag_logo1,Y
@@ -191,9 +194,23 @@ fx_flag_kernel: SUBROUTINE
                 bne .ss_Drbis
 
                 iny
-                cpy #28 ; #18 strobo !
+                cpy #15
                 bne .rexbis
+
+                lda #$00
+                sta PF0
+                sta PF1
+                sta PF2
+
                 sta WSYNC
+.water          
+                sta WSYNC
+                dec fx_lvl
+                bne .water
+
+                lda #0
+                sta fx_lvl
+
                 lda #$00
                 sta COLUPF
                 sta COLUBK
