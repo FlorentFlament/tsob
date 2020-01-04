@@ -120,29 +120,16 @@ JMPBank equ $1FE6
 ; Bank 0
 	ORG $1000
 	RORG $1000
-tt_player_proxy SUBROUTINE
-PARTSTART_ZIK1 equ *
-	; Turn off soundtrack at the end of demo
-	lda curpart
-	cmp ENDMAIN_PART
-	bne tt_PlayerStart
-	lda #$00
-	sta AUDC0
-	sta AUDC1
-	jmp tt_player_proxy_end
-	INCLUDE "zik0_player.asm"
-tt_player_proxy_end:
-	jmp RTSBank
-	INCLUDE "zik0_trackdata.asm"
-	echo "zik1:", (*-PARTSTART_ZIK1)d, "B"
-PARTSTART_FLAG equ *
-	INCLUDE "fx_flag.asm"
-	echo "fx_flag:", (*-PARTSTART_FLAG)d, "B"
-;; PARTSTART_LAPINKO equ *
-;; 	INCLUDE "fx_lapinko.asm"
-;; 	echo "fx_lapinko:", (*-PARTSTART_LAPINKO)d, "B"
+PARTSTART_SLIDESHOW_LOT7_DATA equ *
+	INCLUDE "slideshow-lot7-data.asm"
+	echo "slideshow lot7 data:", (*-PARTSTART_SLIDESHOW_LOT7_DATA)d, "B"
+PARTSTART_SLIDESHOW_LOT7_TIMELINE equ *
+	INCLUDE "slideshow-lot7-timeline.asm"
+	echo "slideshow lot7 timeline:", (*-PARTSTART_SLIDESHOW_LOT7_TIMELINE)d, "B"
+PARTSTART_SLIDESHOW_LOT7_PLAYER equ *
+	INCLUDE "slideshow-lot7-player.asm"
+	echo "slideshow lot7 player:", (*-PARTSTART_SLIDESHOW_LOT7_PLAYER)d, "B"
 	END_SEGMENT 0
-
 
 ; Bank 1
 PARTSTART_SLIDESHOW_LOT1_DATA equ *
@@ -181,55 +168,111 @@ PARTSTART_SLIDESHOW_LOT3_PLAYER equ *
 	END_SEGMENT 3
 
 ; Bank 4
-;; PARTSTART_SPRITEBG equ *
-;; 	INCLUDE "fx_spritebg.asm"
-;; 	echo "fx_spritebg:", (*-PARTSTART_SPRITEBG)d, "B"
+PARTSTART_SLIDESHOW_LOT4_DATA equ *
+	INCLUDE "slideshow-lot4-data.asm"
+	echo "slideshow lot4 data:", (*-PARTSTART_SLIDESHOW_LOT4_DATA)d, "B"
+PARTSTART_SLIDESHOW_LOT4_TIMELINE equ *
+	INCLUDE "slideshow-lot4-timeline.asm"
+	echo "slideshow lot4 timeline:", (*-PARTSTART_SLIDESHOW_LOT4_TIMELINE)d, "B"
+PARTSTART_SLIDESHOW_LOT4_PLAYER equ *
+	INCLUDE "slideshow-lot4-player.asm"
+	echo "slideshow lot4 player:", (*-PARTSTART_SLIDESHOW_LOT4_PLAYER)d, "B"
 	END_SEGMENT 4
 
 ; Bank 5
-;; PARTSTART_ANIMATION equ *
-;; 	INCLUDE "fx_animation.asm"
-;; 	echo "fx_animation:", (*-PARTSTART_ANIMATION)d, "B"
+PARTSTART_SLIDESHOW_LOT5_DATA equ *
+	INCLUDE "slideshow-lot5-data.asm"
+	echo "slideshow lot5 data:", (*-PARTSTART_SLIDESHOW_LOT5_DATA)d, "B"
+PARTSTART_SLIDESHOW_LOT5_TIMELINE equ *
+	INCLUDE "slideshow-lot5-timeline.asm"
+	echo "slideshow lot5 timeline:", (*-PARTSTART_SLIDESHOW_LOT5_TIMELINE)d, "B"
+PARTSTART_SLIDESHOW_LOT5_PLAYER equ *
+	INCLUDE "slideshow-lot5-player.asm"
+	echo "slideshow lot5 player:", (*-PARTSTART_SLIDESHOW_LOT5_PLAYER)d, "B"
 	END_SEGMENT 5
 
 ; Bank 6
-;; PARTSTART_SHUTTER equ *
-;; 	INCLUDE "fx_plainshut_ctrl.asm"
-;; 	INCLUDE "fx_plainshut_kernel.asm"
-;; 	echo "fx_shutter:", (*-PARTSTART_SHUTTER)d, "B"
+PARTSTART_SLIDESHOW_LOT6_DATA equ *
+	INCLUDE "slideshow-lot6-data.asm"
+	echo "slideshow lot6 data:", (*-PARTSTART_SLIDESHOW_LOT6_DATA)d, "B"
+PARTSTART_SLIDESHOW_LOT6_TIMELINE equ *
+	INCLUDE "slideshow-lot6-timeline.asm"
+	echo "slideshow lot6 timeline:", (*-PARTSTART_SLIDESHOW_LOT6_TIMELINE)d, "B"
+PARTSTART_SLIDESHOW_LOT6_PLAYER equ *
+	INCLUDE "slideshow-lot6-player.asm"
+	echo "slideshow lot6 player:", (*-PARTSTART_SLIDESHOW_LOT6_PLAYER)d, "B"
 	END_SEGMENT 6
 
 ; Bank 7
+tt_player_proxy SUBROUTINE
+PARTSTART_ZIK1 equ *
+	; Turn off soundtrack at the end of demo
+	lda curpart
+	cmp ENDMAIN_PART
+	bne tt_PlayerStart
+	lda #$00
+	sta AUDC0
+	sta AUDC1
+	jmp tt_player_proxy_end
+	INCLUDE "zik0_player.asm"
+tt_player_proxy_end:
+	jmp RTSBank
+	INCLUDE "zik0_trackdata.asm"
+	echo "zik1:", (*-PARTSTART_ZIK1)d, "B"
+PARTSTART_FLAG equ *
+	INCLUDE "fx_flag.asm"
+	echo "fx_flag:", (*-PARTSTART_FLAG)d, "B"
+	
 PARTSTART_MAIN equ *
 inits:
 	.word fx_flag_init ; 0
 	.word slideshow_init_lot1
 	.word slideshow_init_lot2
 	.word slideshow_init_lot3
+	.word slideshow_init_lot4
+	.word slideshow_init_lot5
+	.word slideshow_init_lot6
+	.word slideshow_init_lot7
 
 vblanks:
 	.word fx_flag_vblank
 	.word slideshow_vblank_lot1
 	.word slideshow_vblank_lot2
 	.word slideshow_vblank_lot3
+	.word slideshow_vblank_lot4
+	.word slideshow_vblank_lot5
+	.word slideshow_vblank_lot6
+	.word slideshow_vblank_lot7
 
 kernels:
 	.word fx_flag_kernel
 	.word slideshow_kernel_lot1
 	.word slideshow_kernel_lot2
 	.word slideshow_kernel_lot3
+	.word slideshow_kernel_lot4
+	.word slideshow_kernel_lot5
+	.word slideshow_kernel_lot6
+	.word slideshow_kernel_lot7
 
 ; specifies on which frame to switch parts
 M_P0  equ 224
 M_P1  equ M_P0 + 1008
 M_P2  equ M_P1 + 1008
-M_P3  equ 0
+M_P3  equ M_P2 + 1120
+M_P4  equ M_P3 + 1232
+M_P5  equ M_P4 + 1232
+M_P6  equ M_P5 + 1232
+M_P7  equ 0
 
 partswitch:
 	.word M_P0
 	.word M_P1
 	.word M_P2
 	.word M_P3
+	.word M_P4
+	.word M_P5
+	.word M_P6
+	.word M_P7
 
 ; Calls current part
 ; unique argument is the stuff to call (inits, vblanks or kernels)
