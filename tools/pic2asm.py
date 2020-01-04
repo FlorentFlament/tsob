@@ -19,6 +19,8 @@ def best_palette_match(palette, col):
 
 def get_colors(line):
     cols = sorted(set(line))
+    if len(cols) > 2:
+        raise Exception("3 colors found on a line")
     bg = cols[0]
     fg = cols[1] if len(cols)>1 else None
     return (bg, fg)
