@@ -132,7 +132,7 @@ fx_flag_kernel: SUBROUTINE
 .ss_DrawPic
                 sta WSYNC
                 dec fx_lvl
-                ;sty COLUPF
+                sty COLUPF
                 ;nop
                 ;nop
                 lda fx_flag_logo0,Y
