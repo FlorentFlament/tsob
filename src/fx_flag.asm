@@ -7,6 +7,9 @@ fx_flag_init:   SUBROUTINE
                 lda #$FC
                 sta COLUPF
 
+                lda #$A2
+                sta COLUBK
+
                 ldx #39
 .load           lda fx_flag_sintab,x
                 sta fx_flag_ss_sin,x
@@ -100,7 +103,8 @@ fx_flag_vblank: SUBROUTINE
 
 
 fx_flag_kernel: SUBROUTINE
-
+                lda #$80
+                sta COLUBK
                 lda  #2
                 sta  WSYNC
                 sta  WSYNC
@@ -113,6 +117,7 @@ fx_flag_kernel: SUBROUTINE
                 sta WSYNC
                 dex
                 bne .WaitForVblankEnd
+                
 
                 lda #200
                 sta fx_lvl
