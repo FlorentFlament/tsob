@@ -1,4 +1,4 @@
-./pic2asm.py \
+./40x40-2cols-toasm.py \
 "../gfx/xport/23 - B.png" \
 "../gfx/xport/22 - A.png" \
 "../gfx/xport/22 - B.png" \
