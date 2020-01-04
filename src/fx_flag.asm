@@ -154,7 +154,14 @@ fx_flag_kernel: SUBROUTINE
                 sta PF0
                 sta PF1
                 sta PF2
+             
                 sta WSYNC                
+                sta WSYNC                
+                sta WSYNC                
+                sta WSYNC                
+                sta WSYNC                
+                sta WSYNC                
+
                 lda #$B0
                 sta COLUBK
                 lda #$B2
