@@ -4,6 +4,9 @@ from sys import argv
 from PIL import Image
 from asmlib import *
 
+class TooManyColorsException(Exception):
+    pass
+
 # taken from 40years/tools/get_pfcolors.py
 def best_palette_match(palette, col):
     best_c = None
@@ -20,7 +23,7 @@ def best_palette_match(palette, col):
 def get_colors(line):
     cols = sorted(set(line))
     if len(cols) > 2:
-        raise Exception("3 colors found on a line")
+        raise TooManyColorsException("More than 2 colors found on a line: {}".format(cols))
     bg = cols[0]
     fg = cols[1] if len(cols)>1 else None
     return (bg, fg)
@@ -151,7 +154,11 @@ def main():
 
     slides=[]
     for fn in fnames:
-        slides.append( Slide(palette, fn) )
+        try:
+            slides.append( Slide(palette, fn) )
+        except TooManyColorsException as e:
+            print("*Error* while processing: {}".format(fn))
+            print(e)
 
     print("\tALIGN 256 ; In case, but file should be included at the begining of a bank")
     for s in slides:
