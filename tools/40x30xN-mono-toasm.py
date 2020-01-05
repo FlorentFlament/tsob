@@ -108,13 +108,13 @@ class Slide:
         self.prefix = "slideshow_{}".format(gfx_name)
 
     def dump_colbg(self):
-        print(lst2asm(reversed(self.colbg)))
+        print(lst2asm(self.colbg))
 
     def dump_colfg(self):
-        print(lst2asm(reversed(self.colfg)))
+        print(lst2asm(self.colfg))
 
     def dump_pfs_i(self, i):
-        print(lst2asm(reversed(self.pfs[i])))
+        print(lst2asm(self.pfs[i]))
 
 
 def main():
@@ -145,10 +145,18 @@ def main():
             print("*Error* while processing: {}".format(fn))
             print(e)
 
+    prefix = slides[0].prefix
+
     for i in range(6):
-        print("{}_p{}:".format(slides[0].prefix, i))
+        print("{}_p{}:".format(prefix, i))
         for s in slides:
             s.dump_pfs_i(i)
             print()
+
+    print("{}_ptr:".format(prefix))
+    for i  in range(6):
+        print("\tdc.w {}_p{}".format(prefix, i))
+
+
 
 main()
