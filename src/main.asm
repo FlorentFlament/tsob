@@ -238,7 +238,7 @@ M_P2  equ M_P1 + 1008
 M_P3  equ M_P2 + 896
 M_P4  equ M_P3 + 1008
 M_P5  equ M_P4 + 1232
-M_P6  equ M_P5 + 884
+M_P6  equ M_P5 + 1008
 M_P7  equ M_P6 + 1232
 M_P8  equ M_P7 + 1232
 M_P9  equ M_P8 + 780
