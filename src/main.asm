@@ -187,11 +187,14 @@ PARTSTART_VERTSCROLL equ *
 PARTSTART_INTRO_DATA equ *
 	INCLUDE "slideshow-intro-data.asm"
 	echo "intro data:", (*-PARTSTART_INTRO_DATA)d, "B"
+PARTSTART_OUTRO_DATA equ *
+	INCLUDE "slideshow-outro-data.asm"
+	echo "outro data:", (*-PARTSTART_OUTRO_DATA)d, "B"
 
 PARTSTART_MAIN equ *
 inits:
 	.word fx_flag_init
-	.word vertscroll_init
+	.word vertscroll_init_intro
 	.word slideshow_init_lot1
 	.word slideshow_init_lot2
 	.word slideshow_init_lot3
@@ -199,7 +202,7 @@ inits:
 	.word slideshow_init_lot5
 	.word slideshow_init_lot6
 	.word slideshow_init_lot7
-	.word vertscroll_init
+	.word vertscroll_init_outro
 	.word fx_flag_init
 
 vblanks:
@@ -230,7 +233,7 @@ kernels:
 
 ; specifies on which frame to switch parts
 M_P0  equ 224
-M_P1  equ M_P0 + 224
+M_P1  equ M_P0 + 448
 M_P2  equ M_P1 + 1008
 M_P3  equ M_P2 + 1008
 M_P4  equ M_P3 + 1008
@@ -238,7 +241,7 @@ M_P5  equ M_P4 + 1232
 M_P6  equ M_P5 + 1232
 M_P7  equ M_P6 + 1232
 M_P8  equ M_P7 + 1232
-M_P9  equ M_P8 + 224
+M_P9  equ M_P8 + 448
 M_P10 equ 0
 
 partswitch:
