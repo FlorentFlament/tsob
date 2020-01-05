@@ -12,7 +12,7 @@
 ; Set SINGLE_PART to 1 to disable parts switching
 START_PART  equ 0 ; default 0
 SINGLE_PART equ 0 ; default 0
-ENDMAIN_PART equ 8 ; Turn off soundtrack if reached last track
+ENDMAIN_PART equ 10 ; Turn off soundtrack if reached last track
 
 ;;;-----------------------------------------------------------------------------
 ;;; RAM segment
@@ -37,6 +37,8 @@ PARTRAM equ *
 RAMEND  equ $FC
 	echo "RAM available for parts:", (RAMEND-PARTRAM)d, "bytes"
 
+	INCLUDE "vertscroll_vars.asm"
+	echo "vertscroll_vars:", (RAMEND-*)d, "bytes left"
 	INCLUDE "fx_flag_vars.asm"
 	echo "fx_flag_vars:", (RAMEND-*)d, "bytes left"
 	INCLUDE "slideshow_vars.asm"
@@ -179,10 +181,20 @@ tt_player_proxy_end:
 PARTSTART_FLAG equ *
 	INCLUDE "fx_flag.asm"
 	echo "fx_flag:", (*-PARTSTART_FLAG)d, "B"
+PARTSTART_VERTSCROLL equ *
+	INCLUDE "vertscroll.asm"
+	echo "vertscroll:", (*-PARTSTART_VERTSCROLL)d, "B"
+PARTSTART_INTRO_DATA equ *
+	INCLUDE "slideshow-intro-data.asm"
+	echo "intro data:", (*-PARTSTART_INTRO_DATA)d, "B"
+PARTSTART_OUTRO_DATA equ *
+	INCLUDE "slideshow-outro-data.asm"
+	echo "outro data:", (*-PARTSTART_OUTRO_DATA)d, "B"
 
 PARTSTART_MAIN equ *
 inits:
 	.word fx_flag_init
+	.word vertscroll_init_intro
 	.word slideshow_init_lot1
 	.word slideshow_init_lot2
 	.word slideshow_init_lot3
@@ -190,10 +202,12 @@ inits:
 	.word slideshow_init_lot5
 	.word slideshow_init_lot6
 	.word slideshow_init_lot7
+	.word vertscroll_init_outro
 	.word fx_flag_init
 
 vblanks:
 	.word fx_flag_vblank
+	.word vertscroll_vblank
 	.word slideshow_vblank_lot1
 	.word slideshow_vblank_lot2
 	.word slideshow_vblank_lot3
@@ -201,10 +215,12 @@ vblanks:
 	.word slideshow_vblank_lot5
 	.word slideshow_vblank_lot6
 	.word slideshow_vblank_lot7
+	.word vertscroll_vblank
 	.word fx_flag_vblank
 
 kernels:
 	.word fx_flag_kernel
+	.word vertscroll_kernel
 	.word slideshow_kernel_lot1
 	.word slideshow_kernel_lot2
 	.word slideshow_kernel_lot3
@@ -212,18 +228,21 @@ kernels:
 	.word slideshow_kernel_lot5
 	.word slideshow_kernel_lot6
 	.word slideshow_kernel_lot7
+	.word vertscroll_kernel
 	.word fx_flag_kernel
 
 ; specifies on which frame to switch parts
 M_P0  equ 224
-M_P1  equ M_P0 + 1008
+M_P1  equ M_P0 + 448
 M_P2  equ M_P1 + 1008
 M_P3  equ M_P2 + 1008
-M_P4  equ M_P3 + 1232
+M_P4  equ M_P3 + 1008
 M_P5  equ M_P4 + 1232
 M_P6  equ M_P5 + 1232
 M_P7  equ M_P6 + 1232
-M_P8  equ 0
+M_P8  equ M_P7 + 1232
+M_P9  equ M_P8 + 448
+M_P10 equ 0
 
 partswitch:
 	.word M_P0
@@ -234,6 +253,8 @@ partswitch:
 	.word M_P5
 	.word M_P6
 	.word M_P7
+	.word M_P8
+	.word M_P9
 
 ; Calls current part
 ; unique argument is the stuff to call (inits, vblanks or kernels)
