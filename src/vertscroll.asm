@@ -1,10 +1,12 @@
 ;;; Use to build the vertscroll init subroutines
 	MAC m_vertscroll_init
 	lda #240
-	sta vertscroll_lines_cnt
+	sta vertscroll_lines_cnt ; 240 lines to display on screen
 	lda #6
-	sta vertscroll_first_cnt
-	
+	sta vertscroll_first_cnt ; 6 lines per picture row
+	lda #49
+	sta vertscroll_rows_cnt	; Start displaying black after this
+
 	;; Copy 8 pointers i.e 16 bytes to slideshow_colbg memory address
 	ldy 15
 .loop:
@@ -23,10 +25,15 @@ vertscroll_init_outro:	SUBROUTINE
 	m_vertscroll_init outro
 
 vertscroll_vblank:	SUBROUTINE
+	lda vertscroll_rows_cnt
+	bpl .continue
+	dec vertscroll_lines_cnt
+.continue:
 	dec vertscroll_first_cnt
 	bne .end
 	lda #6
 	sta vertscroll_first_cnt
+	dec vertscroll_rows_cnt
 
 	m_add_to_pointer vertscroll_p0, #1
 	m_add_to_pointer vertscroll_p1, #1
