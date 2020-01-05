@@ -21,15 +21,7 @@ slideshow_lot2_l:
 	;; Fritkot
 	dc.b <slideshow_11_a_ptr
 	dc.b <slideshow_11_b_ptr
-	dc.b <slideshow_11_c_ptr
 	dc.b <slideshow_11_a_ptr
-	dc.b <slideshow_11_b_ptr
-	dc.b <slideshow_11_c_ptr
-	dc.b <slideshow_11_a_ptr
-	dc.b <slideshow_11_b_ptr
-	dc.b <slideshow_11_c_ptr
-	dc.b <slideshow_11_a_ptr
-	dc.b <slideshow_11_b_ptr
 	dc.b <slideshow_11_c_ptr
 
 	dc.b <slideshow_12_a_ptr
@@ -57,15 +49,7 @@ slideshow_lot2_h:
 	;; Fritkot
 	dc.b >slideshow_11_a_ptr
 	dc.b >slideshow_11_b_ptr
-	dc.b >slideshow_11_c_ptr
 	dc.b >slideshow_11_a_ptr
-	dc.b >slideshow_11_b_ptr
-	dc.b >slideshow_11_c_ptr
-	dc.b >slideshow_11_a_ptr
-	dc.b >slideshow_11_b_ptr
-	dc.b >slideshow_11_c_ptr
-	dc.b >slideshow_11_a_ptr
-	dc.b >slideshow_11_b_ptr
 	dc.b >slideshow_11_c_ptr
 
 	dc.b >slideshow_12_a_ptr
@@ -91,18 +75,10 @@ slideshow_lot2_t:
 	dc.b 56
 
 	;; Fritkot
-	dc.b 28
-	dc.b 28
-	dc.b 28
-	dc.b 28
-	dc.b 28
-	dc.b 28
-	dc.b 28
-	dc.b 28
-	dc.b 28
-	dc.b 28
-	dc.b 28
-	dc.b 28
+	dc.b 56
+	dc.b 56
+	dc.b 56
+	dc.b 56
 
 	dc.b 112
 	dc.b 0

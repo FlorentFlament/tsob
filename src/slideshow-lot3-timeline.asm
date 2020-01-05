@@ -32,7 +32,15 @@ slideshow_lot3_l
 	dc.b <slideshow_16_c_ptr
 	dc.b <slideshow_16_b_ptr
 	dc.b <slideshow_16_c_ptr
+	dc.b <slideshow_16_b_ptr
+	dc.b <slideshow_16_c_ptr
+	dc.b <slideshow_16_b_ptr
+	dc.b <slideshow_16_c_ptr
 	dc.b <slideshow_16_a_ptr
+	dc.b <slideshow_16_b_ptr
+	dc.b <slideshow_16_c_ptr
+	dc.b <slideshow_16_b_ptr
+	dc.b <slideshow_16_c_ptr
 	dc.b <slideshow_16_b_ptr
 	dc.b <slideshow_16_c_ptr
 	dc.b <slideshow_16_b_ptr
@@ -70,7 +78,15 @@ slideshow_lot3_h:
 	dc.b >slideshow_16_c_ptr
 	dc.b >slideshow_16_b_ptr
 	dc.b >slideshow_16_c_ptr
+	dc.b >slideshow_16_b_ptr
+	dc.b >slideshow_16_c_ptr
+	dc.b >slideshow_16_b_ptr
+	dc.b >slideshow_16_c_ptr
 	dc.b >slideshow_16_a_ptr
+	dc.b >slideshow_16_b_ptr
+	dc.b >slideshow_16_c_ptr
+	dc.b >slideshow_16_b_ptr
+	dc.b >slideshow_16_c_ptr
 	dc.b >slideshow_16_b_ptr
 	dc.b >slideshow_16_c_ptr
 	dc.b >slideshow_16_b_ptr
@@ -104,13 +120,21 @@ slideshow_lot3_t:
 
 	;; Chicon
 	dc.b 56
-	dc.b 14
-	dc.b 14
-	dc.b 14
-	dc.b 14
+	dc.b 7
+	dc.b 7
+	dc.b 7
+	dc.b 7
+	dc.b 7
+	dc.b 7
+	dc.b 7
+	dc.b 7
 	dc.b 56
-	dc.b 14
-	dc.b 14
-	dc.b 14
-	dc.b 14
+	dc.b 7
+	dc.b 7
+	dc.b 7
+	dc.b 7
+	dc.b 7
+	dc.b 7
+	dc.b 7
+	dc.b 7
 	dc.b 0			; end

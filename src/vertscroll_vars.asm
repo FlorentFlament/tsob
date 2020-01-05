@@ -2,6 +2,7 @@
 vertscroll_lines_cnt:	ds 1
 vertscroll_first_cnt:	ds 1
 vertscroll_rows_cnt:	ds 1
+vertscroll_head_cnt:	ds 1
 
 vertscroll_p0:	ds 2
 vertscroll_p1:	ds 2

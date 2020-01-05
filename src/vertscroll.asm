@@ -6,6 +6,8 @@
 	sta vertscroll_first_cnt ; 6 lines per picture row
 	lda #49
 	sta vertscroll_rows_cnt	; Start displaying black after this
+	lda #240
+	sta vertscroll_head_cnt ; Skip head count at the beginning of the kernel
 
 	;; Copy 8 pointers i.e 16 bytes to slideshow_colbg memory address
 	ldy 15
@@ -25,10 +27,26 @@ vertscroll_init_outro:	SUBROUTINE
 	m_vertscroll_init outro
 
 vertscroll_vblank:	SUBROUTINE
+	;; No lines to display anymore
+	lda vertscroll_lines_cnt
+	beq .end
+
+	;; Scroller starts at the top of screen ?
+	lda vertscroll_head_cnt
+	beq .top_of_screen
+	
+	dec vertscroll_head_cnt
+	jmp .end
+
+	;; Main loop
+.top_of_screen:
+	;; Did we display all the GFX rows ?
 	lda vertscroll_rows_cnt
 	bpl .continue
 	dec vertscroll_lines_cnt
+	
 .continue:
+	;; Did we consume a whole row ?
 	dec vertscroll_first_cnt
 	bne .end
 	lda #6
@@ -50,12 +68,27 @@ vertscroll_vblank:	SUBROUTINE
 ;;; vertscroll_p1
 ;;; ...
 vertscroll_kernel:	SUBROUTINE
+	;; Do we have any line to display ?
+	lda vertscroll_lines_cnt
+	beq .end
+
+	;; Do we have any header to skip ?
+	ldy vertscroll_head_cnt
+	beq .display
+.head:
+	sta WSYNC
+	dey
+	bne .head
+	
+.display:
 	lda #$00
 	sta COLUBK
 	lda #$ff
 	sta COLUPF
 
+	sec
 	lda vertscroll_lines_cnt
+	sbc vertscroll_head_cnt
 	sta tmp
 	ldx vertscroll_first_cnt
 	dex
