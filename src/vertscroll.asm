@@ -6,8 +6,6 @@
 	sta vertscroll_first_cnt ; 6 lines per picture row
 	lda #49
 	sta vertscroll_rows_cnt	; Start displaying black after this
-	lda #240
-	sta vertscroll_head_cnt ; Skip head count at the beginning of the kernel
 
 	;; Copy 8 pointers i.e 16 bytes to slideshow_colbg memory address
 	ldy 15
@@ -21,9 +19,13 @@
 	ENDM
 
 vertscroll_init_intro:	SUBROUTINE
+	lda #180
+	sta vertscroll_head_cnt ; Skip head count at the beginning of the kernel
 	m_vertscroll_init intro
 
 vertscroll_init_outro:	SUBROUTINE
+	lda #240
+	sta vertscroll_head_cnt ; Skip head count at the beginning of the kernel
 	m_vertscroll_init outro
 
 vertscroll_vblank:	SUBROUTINE
