@@ -1,12 +1,18 @@
-;;; Use to build the vertscroll init subroutines
-	MAC m_vertscroll_init
+vertscroll_init_common:	 SUBROUTINE
 	lda #240
 	sta vertscroll_lines_cnt ; 240 lines to display on screen
-	lda #6
-	sta vertscroll_first_cnt ; 6 lines per picture row
+	sta vertscroll_head_cnt ; Skip head count at the beginning of the kernel
 	lda #49
 	sta vertscroll_rows_cnt	; Start displaying black after this
+	lda #6
+	sta vertscroll_first_cnt ; 6 lines per picture row
+	lda #6
+	sta vertscroll_fine_cnt	; Scroll the picture once more every 6 steps
+	rts
 
+;;; Use to build the vertscroll init subroutines
+	MAC m_vertscroll_init
+	jsr vertscroll_init_common
 	;; Copy 8 pointers i.e 16 bytes to slideshow_colbg memory address
 	ldy 15
 .loop:
@@ -19,16 +25,12 @@
 	ENDM
 
 vertscroll_init_intro:	SUBROUTINE
-	lda #180
-	sta vertscroll_head_cnt ; Skip head count at the beginning of the kernel
 	m_vertscroll_init intro
 
 vertscroll_init_outro:	SUBROUTINE
-	lda #240
-	sta vertscroll_head_cnt ; Skip head count at the beginning of the kernel
 	m_vertscroll_init outro
 
-vertscroll_vblank:	SUBROUTINE
+vertscroll_update_pos:	SUBROUTINE
 	;; No lines to display anymore
 	lda vertscroll_lines_cnt
 	beq .end
@@ -36,7 +38,7 @@ vertscroll_vblank:	SUBROUTINE
 	;; Scroller starts at the top of screen ?
 	lda vertscroll_head_cnt
 	beq .top_of_screen
-	
+
 	dec vertscroll_head_cnt
 	jmp .end
 
@@ -46,7 +48,7 @@ vertscroll_vblank:	SUBROUTINE
 	lda vertscroll_rows_cnt
 	bpl .continue
 	dec vertscroll_lines_cnt
-	
+
 .continue:
 	;; Did we consume a whole row ?
 	dec vertscroll_first_cnt
@@ -62,6 +64,18 @@ vertscroll_vblank:	SUBROUTINE
 	m_add_to_pointer vertscroll_p4, #1
 	m_add_to_pointer vertscroll_p5, #1
 .end:
+	rts
+
+vertscroll_vblank:	SUBROUTINE
+	jsr vertscroll_update_pos
+
+	;; Do we have to move the picture faster this iteration ?
+	dec vertscroll_fine_cnt
+	bne .end
+	jsr vertscroll_update_pos
+	lda #6			; Moving one step further every 6 frames
+	sta vertscroll_fine_cnt
+.end
 	jmp RTSBank
 
 ;;; vertscroll_lines_cnt: total count of lines to display
@@ -81,7 +95,7 @@ vertscroll_kernel:	SUBROUTINE
 	sta WSYNC
 	dey
 	bne .head
-	
+
 .display:
 	lda #$00
 	sta COLUBK
