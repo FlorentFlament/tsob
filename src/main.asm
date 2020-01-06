@@ -11,7 +11,7 @@
 ; Set SINGLE_PART to 1 to disable parts switching
 START_PART  equ 0 ; default 0
 SINGLE_PART equ 0 ; default 0
-ENDMAIN_PART equ 10 ; Turn off soundtrack if reached last track
+ENDMAIN_PART equ 11 ; Turn off soundtrack if reached last track
 
 ;;;-----------------------------------------------------------------------------
 ;;; RAM segment
@@ -200,8 +200,9 @@ inits:
 	.word slideshow_init_lot4
 	.word slideshow_init_lot5
 	.word slideshow_init_lot6
-	.word slideshow_init_lot7
+	.word slideshow_init_lot7a
 	.word vertscroll_init_outro
+	.word slideshow_init_lot7b
 	.word fx_flag_init
 
 vblanks:
@@ -213,8 +214,9 @@ vblanks:
 	.word slideshow_vblank_lot4
 	.word slideshow_vblank_lot5
 	.word slideshow_vblank_lot6
-	.word slideshow_vblank_lot7
+	.word slideshow_vblank_lot7a
 	.word vertscroll_vblank
+	.word slideshow_vblank_lot7b
 	.word fx_flag_vblank
 
 kernels:
@@ -228,6 +230,7 @@ kernels:
 	.word slideshow_kernel_lot6
 	.word slideshow_kernel_lot7
 	.word vertscroll_kernel
+	.word slideshow_kernel_lot7
 	.word fx_flag_kernel
 
 ; specifies on which frame to switch parts
@@ -239,9 +242,10 @@ M_P4  equ M_P3 + 1008
 M_P5  equ M_P4 + 1232
 M_P6  equ M_P5 + 1008
 M_P7  equ M_P6 + 1232
-M_P8  equ M_P7 + 1232
+M_P8  equ M_P7 + 1120
 M_P9  equ M_P8 + 672
-M_P10 equ 0
+M_P10 equ M_P9 + 224
+M_P11 equ 0	
 
 partswitch:
 	.word M_P0
@@ -254,6 +258,7 @@ partswitch:
 	.word M_P7
 	.word M_P8
 	.word M_P9
+	.word M_P10
 
 ; Calls current part
 ; unique argument is the stuff to call (inits, vblanks or kernels)

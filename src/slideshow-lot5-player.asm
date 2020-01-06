@@ -1,5 +1,8 @@
 slideshow_prepare_pic_lot5:	SUBROUTINE
-	m_slideshow_prepare_pic lot5
+	m_slideshow_prepare_pic lot5, lot5
+
+slideshow_prepare_common_lot5:	SUBROUTINE
+	m_slideshow_prepare_common lot5
 
 slideshow_init_lot5:	SUBROUTINE
 	m_slideshow_init lot5

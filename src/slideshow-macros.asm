@@ -1,7 +1,16 @@
 ;;; Macro to use to build the slideshow_prepare_pic_{1} subroutines
 ;;; slideshow_cur_pic is the index of the picture to display
-;;; Argument should be the lot to be used (e.g: lot1)
+;;; Arguments should be:
+;;; 1. the lot to be used (e.g: lot1a)
+;;; 2. the 'generic' lot of the bank (e.g: lot1)
 	MAC m_slideshow_prepare_pic
+	;; Should we stay ?
+	ldy slideshow_cur_pic
+	lda slideshow_{1}_t,Y
+	bne .cont
+	dec slideshow_cur_pic
+
+.cont:
 	ldy slideshow_cur_pic
 	lda slideshow_{1}_t,Y
 	sta slideshow_pic_cnt
@@ -9,6 +18,14 @@
 	sta ptr
 	lda slideshow_{1}_h,Y
 	sta ptr+1
+	jsr slideshow_prepare_common_{2}
+	rts
+	ENDM
+
+;;; Macro to use to build the slideshow_prepare_common_{1} subroutines
+;;; Arguments should be:
+;;; 1. the 'generic' lot of the bank (e.g: lot1)
+	MAC m_slideshow_prepare_common
 	;; Copy 8 pointers i.e 16 bytes to slideshow_colbg memory address
 	ldy 15
 .loop:
@@ -29,15 +46,10 @@
 
 ;;; Macro to build the slideshow_vblank_{1} subroutines
 	MAC m_slideshow_vblank
+	;; Are we moving to the next slide ?
 	dec slideshow_pic_cnt
 	bne .end
 	inc slideshow_cur_pic
-	;; Should we stay ?
-	ldy slideshow_cur_pic
-	lda slideshow_{1}_t,Y
-	bne .cont
-	dec slideshow_cur_pic
-.cont:
 	jsr slideshow_prepare_pic_{1}
 .end:
 	jmp RTSBank

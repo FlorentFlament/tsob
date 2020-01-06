@@ -1,4 +1,4 @@
-slideshow_lot7_l:
+slideshow_lot7a_l:
 	dc.b <slideshow_25_a_ptr
 	dc.b <slideshow_25_b_ptr
 	dc.b <slideshow_25_a_ptr
@@ -17,9 +17,7 @@ slideshow_lot7_l:
 	dc.b <slideshow_31_c_ptr
 	dc.b <slideshow_31_d_ptr
 
-	dc.b <slideshow_32_ptr
-
-slideshow_lot7_h:
+slideshow_lot7a_h:
 	dc.b >slideshow_25_a_ptr
 	dc.b >slideshow_25_b_ptr
 	dc.b >slideshow_25_a_ptr
@@ -38,9 +36,7 @@ slideshow_lot7_h:
 	dc.b >slideshow_31_c_ptr
 	dc.b >slideshow_31_d_ptr
 
-	dc.b >slideshow_32_ptr
-
-slideshow_lot7_t:
+slideshow_lot7a_t:
 	;; 25
 	dc.b 56
 	dc.b 56
@@ -59,6 +55,15 @@ slideshow_lot7_t:
 	dc.b 112
 	dc.b 112
 	dc.b 112
+	dc.b 0			; end
+
+slideshow_lot7b_l:
+	dc.b <slideshow_32_ptr
+
+slideshow_lot7b_h:
+	dc.b >slideshow_32_ptr
+
+slideshow_lot7b_t:	
 	;; 32
 	dc.b 112
 	dc.b 0			; end
