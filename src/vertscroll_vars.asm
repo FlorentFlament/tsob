@@ -4,6 +4,8 @@ vertscroll_first_cnt:	ds 1
 vertscroll_rows_cnt:	ds 1
 vertscroll_head_cnt:	ds 1
 vertscroll_fine_cnt:	ds 1
+vertscroll_col_switch:	ds 1
+vertscroll_cur_color:	ds 1
 
 vertscroll_p0:	ds 2
 vertscroll_p1:	ds 2

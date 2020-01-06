@@ -1,4 +1,11 @@
+VERTSCROLL_COLOR_PERIOD	equ	#27
+
 vertscroll_init_common:	 SUBROUTINE
+	lda #$00
+	sta COLUBK
+	lda #$fe
+	sta COLUPF
+	sta vertscroll_cur_color ; current PF color
 	lda #240
 	sta vertscroll_lines_cnt ; 240 lines to display on screen
 	sta vertscroll_head_cnt ; Skip head count at the beginning of the kernel
@@ -8,6 +15,8 @@ vertscroll_init_common:	 SUBROUTINE
 	sta vertscroll_first_cnt ; 6 lines per picture row
 	lda #6
 	sta vertscroll_fine_cnt	; Scroll the picture once more every 6 steps
+	lda VERTSCROLL_COLOR_PERIOD
+	sta vertscroll_col_switch ; Counter to switch text color
 	rts
 
 ;;; Use to build the vertscroll init subroutines
@@ -69,6 +78,16 @@ vertscroll_update_pos:	SUBROUTINE
 vertscroll_vblank:	SUBROUTINE
 	jsr vertscroll_update_pos
 
+	;; Do we need to change PF color ?
+	dec vertscroll_col_switch
+	bpl .no_switch
+	lda VERTSCROLL_COLOR_PERIOD
+	sta vertscroll_col_switch
+	lda vertscroll_cur_color
+	eor #$08
+	sta vertscroll_cur_color
+	sta COLUPF
+.no_switch
 	;; Do we have to move the picture faster this iteration ?
 	dec vertscroll_fine_cnt
 	bne .end
@@ -97,11 +116,6 @@ vertscroll_kernel:	SUBROUTINE
 	bne .head
 
 .display:
-	lda #$00
-	sta COLUBK
-	lda #$ff
-	sta COLUPF
-
 	sec
 	lda vertscroll_lines_cnt
 	sbc vertscroll_head_cnt
@@ -136,8 +150,6 @@ vertscroll_kernel:	SUBROUTINE
 .end
 	sta WSYNC
 	lda #$00
-	sta COLUBK
-	sta COLUPF
 	sta PF0
 	sta PF1
 	sta PF2
