@@ -244,7 +244,7 @@ M_P6  equ M_P5 + 1008
 M_P7  equ M_P6 + 1232
 M_P8  equ M_P7 + 1120
 M_P9  equ M_P8 + 672
-M_P10 equ M_P9 + 448
+M_P10 equ M_P9 + 224
 M_P11 equ 0	
 
 partswitch:
