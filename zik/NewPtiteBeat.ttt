@@ -180,7 +180,7 @@
                 },
                 {
                     "gototarget": -1,
-                    "patternindex": 37
+                    "patternindex": 0
                 },
                 {
                     "gototarget": 45,
@@ -5029,74 +5029,194 @@
             "name": "endA",
             "notes": [
                 {
-                    "number": 0,
+                    "number": 1,
                     "type": 1,
-                    "value": 22
+                    "value": 49
+                },
+                {
+                    "number": 1,
+                    "type": 0,
+                    "value": 16
                 },
                 {
                     "number": 1,
                     "type": 1,
-                    "value": 17
-                },
-                {
-                    "number": 0,
-                    "type": 1,
-                    "value": 22
-                },
-                {
-                    "number": 0,
-                    "type": 1,
-                    "value": 22
-                },
-                {
-                    "number": 1,
-                    "type": 3,
-                    "value": 22
-                },
-                {
-                    "number": 0,
-                    "type": 1,
-                    "value": 22
+                    "value": 47
                 },
                 {
                     "number": 1,
                     "type": 1,
-                    "value": 23
+                    "value": 46
                 },
                 {
                     "number": 1,
-                    "type": 1,
-                    "value": 21
-                },
-                {
-                    "number": 0,
-                    "type": 1,
-                    "value": 20
-                },
-                {
-                    "number": 1,
-                    "type": 1,
+                    "type": 0,
                     "value": 19
                 },
                 {
-                    "number": 0,
+                    "number": 1,
+                    "type": 0,
+                    "value": 16
+                },
+                {
+                    "number": 1,
                     "type": 1,
+                    "value": 44
+                },
+                {
+                    "number": 1,
+                    "type": 0,
+                    "value": 24
+                },
+                {
+                    "number": 1,
+                    "type": 1,
+                    "value": 43
+                },
+                {
+                    "number": 1,
+                    "type": 1,
+                    "value": 42
+                },
+                {
+                    "number": 4,
+                    "type": 0,
+                    "value": 16
+                },
+                {
+                    "number": 1,
+                    "type": 1,
+                    "value": 43
+                },
+                {
+                    "number": 1,
+                    "type": 1,
+                    "value": 42
+                },
+                {
+                    "number": 4,
+                    "type": 0,
+                    "value": 16
+                },
+                {
+                    "number": 1,
+                    "type": 1,
+                    "value": 26
+                },
+                {
+                    "number": 1,
+                    "type": 1,
+                    "value": 46
+                },
+                {
+                    "number": 4,
+                    "type": 0,
                     "value": 20
                 },
                 {
-                    "number": 0,
-                    "type": 1,
+                    "number": 4,
+                    "type": 0,
+                    "value": 3
+                },
+                {
+                    "number": 4,
+                    "type": 0,
                     "value": 20
                 },
                 {
                     "number": 1,
-                    "type": 3,
+                    "type": 1,
+                    "value": 42
+                },
+                {
+                    "number": 1,
+                    "type": 1,
+                    "value": 44
+                },
+                {
+                    "number": 1,
+                    "type": 1,
+                    "value": 46
+                },
+                {
+                    "number": 4,
+                    "type": 0,
                     "value": 0
                 },
                 {
-                    "number": 0,
+                    "number": 4,
+                    "type": 0,
+                    "value": 29
+                },
+                {
+                    "number": 1,
                     "type": 1,
-                    "value": 20
+                    "value": 43
+                },
+                {
+                    "number": 4,
+                    "type": 0,
+                    "value": 0
+                },
+                {
+                    "number": 1,
+                    "type": 1,
+                    "value": 42
+                },
+                {
+                    "number": 1,
+                    "type": 1,
+                    "value": 29
+                },
+                {
+                    "number": 4,
+                    "type": 0,
+                    "value": 29
+                },
+                {
+                    "number": 4,
+                    "type": 0,
+                    "value": 29
+                },
+                {
+                    "number": 1,
+                    "type": 1,
+                    "value": 29
+                },
+                {
+                    "number": 4,
+                    "type": 0,
+                    "value": 27
+                },
+                {
+                    "number": 1,
+                    "type": 1,
+                    "value": 29
+                },
+                {
+                    "number": 1,
+                    "type": 1,
+                    "value": 29
+                },
+                {
+                    "number": 4,
+                    "type": 0,
+                    "value": 0
+                },
+                {
+                    "number": 1,
+                    "type": 1,
+                    "value": 29
+                },
+                {
+                    "number": 1,
+                    "type": 1,
+                    "value": 42
+                },
+                {
+                    "number": 4,
+                    "type": 0,
+                    "value": 0
                 },
                 {
                     "number": 1,
@@ -5109,83 +5229,43 @@
                     "value": 26
                 },
                 {
-                    "number": 0,
-                    "type": 1,
-                    "value": 27
+                    "number": 4,
+                    "type": 0,
+                    "value": 0
+                },
+                {
+                    "number": 4,
+                    "type": 0,
+                    "value": 4
+                },
+                {
+                    "number": 4,
+                    "type": 0,
+                    "value": 3
+                },
+                {
+                    "number": 4,
+                    "type": 0,
+                    "value": 42
+                },
+                {
+                    "number": 4,
+                    "type": 0,
+                    "value": 6
                 },
                 {
                     "number": 1,
                     "type": 1,
-                    "value": 21
+                    "value": 42
                 },
                 {
-                    "number": 0,
-                    "type": 1,
-                    "value": 27
-                },
-                {
-                    "number": 0,
-                    "type": 1,
-                    "value": 27
-                },
-                {
-                    "number": 1,
+                    "number": 2,
                     "type": 3,
                     "value": 27
                 },
                 {
-                    "number": 0,
-                    "type": 1,
-                    "value": 27
-                },
-                {
-                    "number": 1,
-                    "type": 1,
-                    "value": 17
-                },
-                {
-                    "number": 1,
-                    "type": 1,
-                    "value": 19
-                },
-                {
-                    "number": 0,
-                    "type": 1,
-                    "value": 27
-                },
-                {
-                    "number": 1,
-                    "type": 1,
-                    "value": 26
-                },
-                {
-                    "number": 0,
-                    "type": 1,
-                    "value": 27
-                },
-                {
-                    "number": 0,
-                    "type": 1,
-                    "value": 27
-                },
-                {
-                    "number": 1,
+                    "number": 2,
                     "type": 3,
-                    "value": 18
-                },
-                {
-                    "number": 0,
-                    "type": 1,
-                    "value": 20
-                },
-                {
-                    "number": 0,
-                    "type": 1,
-                    "value": 22
-                },
-                {
-                    "number": 1,
-                    "type": 1,
                     "value": 29
                 }
             ],
@@ -5198,47 +5278,122 @@
                 {
                     "number": 1,
                     "type": 1,
-                    "value": 61
+                    "value": 53
                 },
                 {
                     "number": 1,
                     "type": 1,
+                    "value": 53
+                },
+                {
+                    "number": 1,
+                    "type": 1,
+                    "value": 53
+                },
+                {
+                    "number": 1,
+                    "type": 1,
+                    "value": 53
+                },
+                {
+                    "number": 2,
+                    "type": 3,
+                    "value": 1
+                },
+                {
+                    "number": 0,
+                    "type": 1,
+                    "value": 16
+                },
+                {
+                    "number": 1,
+                    "type": 1,
+                    "value": 53
+                },
+                {
+                    "number": 1,
+                    "type": 1,
+                    "value": 53
+                },
+                {
+                    "number": 1,
+                    "type": 1,
+                    "value": 53
+                },
+                {
+                    "number": 1,
+                    "type": 1,
+                    "value": 53
+                },
+                {
+                    "number": 2,
+                    "type": 3,
                     "value": 46
                 },
                 {
-                    "number": 1,
+                    "number": 0,
                     "type": 1,
-                    "value": 61
+                    "value": 16
                 },
                 {
                     "number": 1,
                     "type": 1,
-                    "value": 43
+                    "value": 53
                 },
                 {
                     "number": 1,
                     "type": 1,
-                    "value": 61
+                    "value": 53
                 },
                 {
                     "number": 1,
                     "type": 1,
-                    "value": 47
+                    "value": 53
                 },
                 {
                     "number": 1,
                     "type": 1,
-                    "value": 61
+                    "value": 53
                 },
                 {
-                    "number": 1,
-                    "type": 1,
+                    "number": 2,
+                    "type": 3,
                     "value": 46
                 },
                 {
+                    "number": 0,
+                    "type": 1,
+                    "value": 13
+                },
+                {
                     "number": 1,
                     "type": 1,
-                    "value": 58
+                    "value": 53
+                },
+                {
+                    "number": 1,
+                    "type": 1,
+                    "value": 53
+                },
+                {
+                    "number": 1,
+                    "type": 1,
+                    "value": 53
+                },
+                {
+                    "number": 1,
+                    "type": 1,
+                    "value": 53
+                },
+                {
+                    "number": 2,
+                    "type": 3,
+                    "value": 0
+                },
+                {
+                    "number": 0,
+                    "type": 1,
+                    "value": 20
                 },
                 {
                     "number": 1,
@@ -5248,27 +5403,57 @@
                 {
                     "number": 1,
                     "type": 1,
-                    "value": 58
+                    "value": 51
                 },
                 {
                     "number": 1,
                     "type": 1,
-                    "value": 47
+                    "value": 51
                 },
                 {
                     "number": 1,
                     "type": 1,
-                    "value": 58
+                    "value": 51
+                },
+                {
+                    "number": 2,
+                    "type": 3,
+                    "value": 0
+                },
+                {
+                    "number": 0,
+                    "type": 1,
+                    "value": 15
                 },
                 {
                     "number": 1,
                     "type": 1,
-                    "value": 46
+                    "value": 51
                 },
                 {
                     "number": 1,
                     "type": 1,
-                    "value": 58
+                    "value": 51
+                },
+                {
+                    "number": 1,
+                    "type": 1,
+                    "value": 51
+                },
+                {
+                    "number": 1,
+                    "type": 1,
+                    "value": 51
+                },
+                {
+                    "number": 2,
+                    "type": 3,
+                    "value": 0
+                },
+                {
+                    "number": 0,
+                    "type": 1,
+                    "value": 16
                 },
                 {
                     "number": 1,
@@ -5278,42 +5463,27 @@
                 {
                     "number": 1,
                     "type": 1,
-                    "value": 63
+                    "value": 49
                 },
                 {
                     "number": 1,
                     "type": 1,
-                    "value": 43
+                    "value": 51
                 },
                 {
                     "number": 1,
                     "type": 1,
-                    "value": 63
+                    "value": 53
                 },
                 {
-                    "number": 1,
-                    "type": 1,
-                    "value": 46
+                    "number": 2,
+                    "type": 3,
+                    "value": 0
                 },
                 {
-                    "number": 1,
+                    "number": 0,
                     "type": 1,
-                    "value": 63
-                },
-                {
-                    "number": 1,
-                    "type": 1,
-                    "value": 47
-                },
-                {
-                    "number": 1,
-                    "type": 1,
-                    "value": 63
-                },
-                {
-                    "number": 1,
-                    "type": 1,
-                    "value": 46
+                    "value": 13
                 },
                 {
                     "number": 1,
@@ -5323,37 +5493,27 @@
                 {
                     "number": 1,
                     "type": 1,
-                    "value": 47
-                },
-                {
-                    "number": 1,
-                    "type": 1,
                     "value": 61
                 },
                 {
                     "number": 1,
                     "type": 1,
-                    "value": 46
+                    "value": 55
                 },
                 {
                     "number": 1,
                     "type": 1,
-                    "value": 61
+                    "value": 53
                 },
                 {
-                    "number": 1,
-                    "type": 1,
-                    "value": 43
+                    "number": 0,
+                    "type": 0,
+                    "value": 15
                 },
                 {
-                    "number": 1,
+                    "number": 0,
                     "type": 1,
-                    "value": 61
-                },
-                {
-                    "number": 1,
-                    "type": 1,
-                    "value": 46
+                    "value": 22
                 }
             ],
             "oddspeed": 7

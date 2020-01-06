@@ -290,28 +290,24 @@ tt_pattern13:
         dc.b $08, $08, $08, $08, $08, $08, $08, $08
         dc.b $00
 
-; endD
-tt_pattern14:
-        dc.b $08, $08, $08, $08, $57, $53, $51, $53
-        dc.b $13, $4e, $76, $4b, $13, $13, $76, $13
-        dc.b $00
-
 ; endA
-tt_pattern15:
-        dc.b $76, $31, $76, $76, $13, $76, $37, $35
-        dc.b $74, $33, $74, $74, $13, $74, $3d, $3a
-        dc.b $7b, $35, $7b, $7b, $13, $7b, $31, $33
-        dc.b $7b, $3a, $7b, $7b, $13, $74, $76, $3d
+tt_pattern14:
+        dc.b $51, $08, $4f, $4e, $08, $08, $4c, $08
+        dc.b $4b, $4a, $08, $4b, $4a, $08, $3a, $4e
+        dc.b $08, $08, $08, $4a, $4c, $4e, $08, $08
+        dc.b $4b, $08, $4a, $3d, $08, $08, $3d, $08
+        dc.b $3d, $3d, $08, $3d, $4a, $08, $3d, $3a
+        dc.b $08, $08, $08, $08, $08, $4a, $11, $11
         dc.b $00
 
 ; b0a
-tt_pattern16:
+tt_pattern15:
         dc.b $7b, $6d, $08, $7b, $6d, $08, $7b, $6d
         dc.b $08, $7b, $6d, $08, $7b, $08, $7b, $08
         dc.b $00
 
 ; b+mal0a
-tt_pattern17:
+tt_pattern16:
         dc.b $7b, $6d, $51, $7b, $6d, $53, $7b, $6d
         dc.b $4e, $7b, $6d, $53, $7b, $51, $7b, $51
         dc.b $7b, $6d, $53, $7b, $6d, $51, $7b, $6d
@@ -319,7 +315,7 @@ tt_pattern17:
         dc.b $00
 
 ; b+mal0b
-tt_pattern18:
+tt_pattern17:
         dc.b $7b, $6d, $4e, $7b, $6d, $4c, $7b, $6d
         dc.b $51, $7b, $6d, $4e, $7b, $57, $7b, $53
         dc.b $7b, $6d, $08, $7b, $6d, $51, $7b, $6d
@@ -327,7 +323,7 @@ tt_pattern18:
         dc.b $00
 
 ; b+mal0c
-tt_pattern19:
+tt_pattern18:
         dc.b $7b, $6d, $4b, $7b, $6d, $51, $7b, $6d
         dc.b $57, $7b, $6d, $4e, $7b, $57, $7b, $53
         dc.b $7b, $6d, $08, $7b, $6d, $4b, $7b, $6d
@@ -335,7 +331,7 @@ tt_pattern19:
         dc.b $00
 
 ; mal0a
-tt_pattern20:
+tt_pattern19:
         dc.b $51, $4e, $51, $11, $11, $53, $4c, $11
         dc.b $4e, $11, $3a, $53, $11, $51, $4b, $51
         dc.b $11, $11, $53, $11, $11, $51, $3d, $11
@@ -343,7 +339,7 @@ tt_pattern20:
         dc.b $00
 
 ; mal0b
-tt_pattern21:
+tt_pattern20:
         dc.b $11, $11, $4e, $11, $11, $51, $4c, $11
         dc.b $51, $11, $3d, $4e, $11, $57, $4b, $53
         dc.b $11, $11, $3a, $11, $11, $51, $35, $11
@@ -351,7 +347,7 @@ tt_pattern21:
         dc.b $00
 
 ; mal0c
-tt_pattern22:
+tt_pattern21:
         dc.b $11, $11, $4b, $11, $11, $51, $31, $11
         dc.b $57, $11, $33, $4e, $11, $57, $3a, $53
         dc.b $11, $11, $35, $11, $11, $4b, $3d, $11
@@ -359,7 +355,7 @@ tt_pattern22:
         dc.b $00
 
 ; b+mal0d
-tt_pattern23:
+tt_pattern22:
         dc.b $14, $14, $14, $14, $14, $11, $14, $14
         dc.b $14, $11, $14, $11, $14, $14, $14, $08
         dc.b $14, $14, $14, $14, $14, $11, $14, $14
@@ -367,7 +363,7 @@ tt_pattern23:
         dc.b $00
 
 ; b+mal0e
-tt_pattern24:
+tt_pattern23:
         dc.b $14, $14, $14, $14, $14, $11, $14, $14
         dc.b $14, $11, $14, $11, $14, $14, $14, $08
         dc.b $11, $11, $11, $08, $11, $08, $11, $08
@@ -375,7 +371,7 @@ tt_pattern24:
         dc.b $00
 
 ; b1a
-tt_pattern25:
+tt_pattern24:
         dc.b $72, $72, $08, $72, $72, $08, $6f, $6f
         dc.b $08, $6f, $6f, $08, $6f, $08, $6f, $08
         dc.b $6d, $6d, $08, $6d, $6d, $08, $6f, $6f
@@ -383,42 +379,42 @@ tt_pattern25:
         dc.b $00
 
 ; mel3a
-tt_pattern26:
+tt_pattern25:
         dc.b $4e, $08, $08, $4c, $4b, $08, $4b, $08
         dc.b $00
 
 ; mel3a2
-tt_pattern27:
+tt_pattern26:
         dc.b $4c, $4e, $4c, $4b, $4e, $08, $53, $08
         dc.b $00
 
 ; mel3b
-tt_pattern28:
+tt_pattern27:
         dc.b $51, $51, $08, $51, $51, $08, $51, $08
         dc.b $00
 
 ; mel3b2
-tt_pattern29:
+tt_pattern28:
         dc.b $4f, $08, $08, $08, $4f, $08, $08, $08
         dc.b $00
 
 ; mel3c
-tt_pattern30:
+tt_pattern29:
         dc.b $4f, $08, $4f, $08, $4f, $08, $08, $08
         dc.b $00
 
 ; mel3d
-tt_pattern31:
+tt_pattern30:
         dc.b $51, $51, $08, $51, $4f, $08, $08, $08
         dc.b $00
 
 ; mel3e
-tt_pattern32:
+tt_pattern31:
         dc.b $4f, $08, $14, $08, $4f, $14, $14, $14
         dc.b $00
 
 ; b4a
-tt_pattern33:
+tt_pattern32:
         dc.b $72, $08, $72, $08, $72, $72, $08, $78
         dc.b $08, $78, $08, $78, $78, $78, $78, $78
         dc.b $74, $08, $74, $08, $74, $74, $08, $72
@@ -426,7 +422,7 @@ tt_pattern33:
         dc.b $00
 
 ; b4b
-tt_pattern34:
+tt_pattern33:
         dc.b $72, $08, $72, $08, $72, $72, $08, $6d
         dc.b $08, $6d, $08, $6d, $6d, $6d, $6d, $6d
         dc.b $74, $08, $74, $08, $74, $74, $08, $72
@@ -434,7 +430,7 @@ tt_pattern34:
         dc.b $00
 
 ; hh0b
-tt_pattern35:
+tt_pattern34:
         dc.b $11, $11, $08, $11, $11, $08, $08, $11
         dc.b $11, $08, $08, $08, $11, $11, $08, $08
         dc.b $11, $11, $08, $11, $11, $08, $08, $11
@@ -442,11 +438,13 @@ tt_pattern35:
         dc.b $00
 
 ; endB
-tt_pattern36:
-        dc.b $5d, $4e, $5d, $4b, $5d, $4f, $5d, $4e
-        dc.b $5a, $53, $5a, $4f, $5a, $4e, $5a, $51
-        dc.b $5f, $4b, $5f, $4e, $5f, $4f, $5f, $4e
-        dc.b $5d, $4f, $5d, $4e, $5d, $4b, $5d, $4e
+tt_pattern35:
+        dc.b $55, $55, $55, $55, $11, $70, $55, $55
+        dc.b $55, $55, $11, $70, $55, $55, $55, $55
+        dc.b $11, $6d, $55, $55, $55, $55, $11, $74
+        dc.b $53, $53, $53, $53, $11, $6f, $53, $53
+        dc.b $53, $53, $11, $70, $51, $51, $53, $55
+        dc.b $11, $6d, $5d, $5d, $57, $55, $08, $76
         dc.b $00
 
 
@@ -476,7 +474,7 @@ tt_PatternPtrLo:
         dc.b <tt_pattern24, <tt_pattern25, <tt_pattern26, <tt_pattern27
         dc.b <tt_pattern28, <tt_pattern29, <tt_pattern30, <tt_pattern31
         dc.b <tt_pattern32, <tt_pattern33, <tt_pattern34, <tt_pattern35
-        dc.b <tt_pattern36
+
 tt_PatternPtrHi:
         dc.b >tt_pattern0, >tt_pattern1, >tt_pattern2, >tt_pattern3
         dc.b >tt_pattern4, >tt_pattern5, >tt_pattern6, >tt_pattern7
@@ -487,7 +485,7 @@ tt_PatternPtrHi:
         dc.b >tt_pattern24, >tt_pattern25, >tt_pattern26, >tt_pattern27
         dc.b >tt_pattern28, >tt_pattern29, >tt_pattern30, >tt_pattern31
         dc.b >tt_pattern32, >tt_pattern33, >tt_pattern34, >tt_pattern35
-        dc.b >tt_pattern36        
+        
 
 
 ; ---------------------------------------------------------------------
@@ -507,18 +505,18 @@ tt_SequenceTable:
         dc.b $06, $02, $02, $07, $07, $02, $02, $07
         dc.b $08, $09, $0a, $09, $0b, $04, $0c, $02
         dc.b $02, $03, $03, $04, $04, $01, $03, $04
-        dc.b $04, $02, $02, $0d, $0e, $0f, $ad
+        dc.b $04, $02, $02, $0d, $00, $0e, $ad
 
         
         ; ---------- Channel 1 ----------
-        dc.b $10, $10, $10, $10, $10, $10, $10, $10
-        dc.b $10, $10, $10, $10, $11, $12, $11, $13
-        dc.b $14, $15, $14, $16, $17, $18, $19, $19
-        dc.b $19, $19, $19, $19, $19, $19, $1a, $1b
-        dc.b $1c, $1d, $1a, $1b, $1c, $1e, $1a, $1a
-        dc.b $1b, $1b, $1c, $1f, $1c, $20, $21, $22
-        dc.b $21, $22, $21, $22, $21, $22, $23, $23
-        dc.b $01, $01, $00, $00, $00, $24, $ec
+        dc.b $0f, $0f, $0f, $0f, $0f, $0f, $0f, $0f
+        dc.b $0f, $0f, $0f, $0f, $10, $11, $10, $12
+        dc.b $13, $14, $13, $15, $16, $17, $18, $18
+        dc.b $18, $18, $18, $18, $18, $18, $19, $1a
+        dc.b $1b, $1c, $19, $1a, $1b, $1d, $19, $19
+        dc.b $1a, $1a, $1b, $1e, $1b, $1f, $20, $21
+        dc.b $20, $21, $20, $21, $20, $21, $22, $22
+        dc.b $01, $01, $00, $00, $00, $23, $ec
 
 
         echo "Track size: ", *-tt_TrackDataStart
