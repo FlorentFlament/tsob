@@ -207,7 +207,7 @@ inits:
 
 vblanks:
 	.word fx_flag_vblank
-	.word vertscroll_vblank
+	.word vertscroll_vblank_intro
 	.word slideshow_vblank_lot1
 	.word slideshow_vblank_lot2
 	.word slideshow_vblank_lot3
@@ -215,7 +215,7 @@ vblanks:
 	.word slideshow_vblank_lot5
 	.word slideshow_vblank_lot6
 	.word slideshow_vblank_lot7a
-	.word vertscroll_vblank
+	.word vertscroll_vblank_outro
 	.word slideshow_vblank_lot7b
 	.word fx_flag_vblank
 

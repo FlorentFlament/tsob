@@ -1,11 +1,11 @@
 VERTSCROLL_COLOR_PERIOD	equ	#27
 
+vertscroll_colors:
+	dc.b $64, $2a, $04
+
 vertscroll_init_common:	 SUBROUTINE
 	lda #$00
 	sta COLUBK
-	lda #$fe
-	sta COLUPF
-	sta vertscroll_cur_color ; current PF color
 	lda #240
 	sta vertscroll_lines_cnt ; 240 lines to display on screen
 	sta vertscroll_head_cnt ; Skip head count at the beginning of the kernel
@@ -34,9 +34,16 @@ vertscroll_init_common:	 SUBROUTINE
 	ENDM
 
 vertscroll_init_intro:	SUBROUTINE
+	ldy #2
+	sty vertscroll_cur_color ; index to the color in the table
+	lda vertscroll_colors,Y
+	sta COLUPF
 	m_vertscroll_init intro
 
 vertscroll_init_outro:	SUBROUTINE
+	lda #$fe
+	sta COLUPF
+	sta vertscroll_cur_color ; current PF color
 	m_vertscroll_init outro
 
 vertscroll_update_pos:	SUBROUTINE
@@ -75,26 +82,56 @@ vertscroll_update_pos:	SUBROUTINE
 .end:
 	rts
 
-vertscroll_vblank:	SUBROUTINE
+vertscroll_vblank_common:	SUBROUTINE
 	jsr vertscroll_update_pos
+
+	;; Do we have to move the picture faster this iteration ?
+	dec vertscroll_fine_cnt
+	bne .not_faster
+	jsr vertscroll_update_pos
+	lda #6			; Moving one step further every 6 frames
+	sta vertscroll_fine_cnt
+.not_faster:
+	rts
+
+vertscroll_vblank_intro:	SUBROUTINE
+	jsr vertscroll_vblank_common
 
 	;; Do we need to change PF color ?
 	dec vertscroll_col_switch
 	bpl .no_switch
 	lda VERTSCROLL_COLOR_PERIOD
 	sta vertscroll_col_switch
+
+	;; changing color
+	ldy vertscroll_cur_color
+	dey
+	bpl .no_loop
+	ldy #2
+.no_loop:
+	sty vertscroll_cur_color
+	lda vertscroll_colors,Y
+	sta COLUPF
+.no_switch:
+
+	jmp RTSBank
+
+vertscroll_vblank_outro:	SUBROUTINE
+	jsr vertscroll_vblank_common
+
+	;; Do we need to change PF color ?
+	dec vertscroll_col_switch
+	bpl .no_switch
+	lda VERTSCROLL_COLOR_PERIOD
+	sta vertscroll_col_switch
+
+	;; Changing color
 	lda vertscroll_cur_color
 	eor #$08
 	sta vertscroll_cur_color
 	sta COLUPF
-.no_switch
-	;; Do we have to move the picture faster this iteration ?
-	dec vertscroll_fine_cnt
-	bne .end
-	jsr vertscroll_update_pos
-	lda #6			; Moving one step further every 6 frames
-	sta vertscroll_fine_cnt
-.end
+.no_switch:
+
 	jmp RTSBank
 
 ;;; vertscroll_lines_cnt: total count of lines to display
