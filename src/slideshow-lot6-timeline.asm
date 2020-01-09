@@ -74,14 +74,14 @@ slideshow_lot6_t:
 	dc.b 28
 	dc.b 28
 	;; 28
+	dc.b 112
 	dc.b 56
 	dc.b 56
 	dc.b 56
 	dc.b 56
 	dc.b 56
 	dc.b 56
-	dc.b 56
-	dc.b 56
+	dc.b 112
 	dc.b 56
 	dc.b 56
 	dc.b 56

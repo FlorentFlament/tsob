@@ -55,9 +55,12 @@ slideshow_lot2_h:
 	dc.b >slideshow_12_a_ptr
 
 slideshow_lot2_t:
+	;; 07
 	dc.b 112
+	;; 08
 	dc.b 112
 
+	;; 09 (112)
 	;; Pils and love
 	dc.b 14
 	dc.b 14
@@ -68,17 +71,20 @@ slideshow_lot2_t:
 	dc.b 14
 	dc.b 14
 
+	;; 10 (224)
 	;; Deviation
 	dc.b 56
 	dc.b 56
 	dc.b 56
 	dc.b 56
 
+	;; 11 (224)
 	;; Fritkot
 	dc.b 56
 	dc.b 56
 	dc.b 56
 	dc.b 56
 
+	;; 12 A
 	dc.b 112
 	dc.b 0

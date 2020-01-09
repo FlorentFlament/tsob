@@ -29,7 +29,7 @@
 ; =====================================================================
         lda #0
         sta tt_cur_pat_index_c0
-        lda #47
+        lda #46
         sta tt_cur_pat_index_c1
         ; the rest should be 0 already from startup code. If not,
         ; set the following variables to 0 manually:
