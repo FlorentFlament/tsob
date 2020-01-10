@@ -179,7 +179,11 @@
                     "patternindex": 36
                 },
                 {
-                    "gototarget": 44,
+                    "gototarget": -1,
+                    "patternindex": 0
+                },
+                {
+                    "gototarget": 45,
                     "patternindex": 34
                 }
             ]
@@ -427,7 +431,11 @@
                     "patternindex": 0
                 },
                 {
-                    "gototarget": 60,
+                    "gototarget": -1,
+                    "patternindex": 0
+                },
+                {
+                    "gototarget": 61,
                     "patternindex": 35
                 }
             ]
