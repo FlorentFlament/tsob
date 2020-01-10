@@ -202,6 +202,7 @@ inits:
 	.word slideshow_init_lot6
 	.word slideshow_init_lot7a
 	.word vertscroll_init_outro
+	.word slideshow_init_lot7b
 	.word fx_flag_init
 
 vblanks:
@@ -215,6 +216,7 @@ vblanks:
 	.word slideshow_vblank_lot6
 	.word slideshow_vblank_lot7a
 	.word vertscroll_vblank_outro
+	.word slideshow_vblank_lot7b
 	.word fx_flag_vblank
 
 kernels:
@@ -228,6 +230,7 @@ kernels:
 	.word slideshow_kernel_lot6
 	.word slideshow_kernel_lot7
 	.word vertscroll_kernel
+	.word slideshow_kernel_lot7
 	.word fx_flag_kernel
 
 ; specifies on which frame to switch parts
@@ -239,9 +242,10 @@ M_P4  equ M_P3 + 896
 M_P5  equ M_P4 + 1232
 M_P6  equ M_P5 + 784
 M_P7  equ M_P6 + 1344
-M_P8  equ M_P7 + 1344
+M_P8  equ M_P7 + 1232
 M_P9  equ M_P8 + 672
-M_P10 equ 0
+M_P10 equ M_P9 + 112
+M_P11 equ 0	
 
 partswitch:
 	.word M_P0
@@ -254,6 +258,7 @@ partswitch:
 	.word M_P7
 	.word M_P8
 	.word M_P9
+	.word M_P10
 
 ; Calls current part
 ; unique argument is the stuff to call (inits, vblanks or kernels)
